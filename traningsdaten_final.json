@@ -1,0 +1,1845 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Verkauft ihr Computer?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ja, wir verkaufen Computer. Was genau suchen Sie?"
+      },
+      {
+        "role": "user",
+        "content": "Ich brauche Pc fürs Gaming"
+      },
+      {
+        "role": "assistant",
+        "content": "Wir haben aktuell zwei Gaming PCs im Sortiment."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"Acer Predator G3\", \"format\": \"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query for the desired product."
+            },
+            "format": {
+              "type": "string",
+              "description": "Desired format of the response."
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir eine Festplatte empfehlen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Da es viele verschiedene Festplattenarten gibt, habe ich einige Fragen: SSD oder HDD, intern oder extern?"
+      },
+      {
+        "role": "user",
+        "content": "Eine interne SSD"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"Solid State Drive\", \"format\": \"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Laptop von Acer"
+      },
+      {
+        "role": "assistant",
+        "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\": \"Notebooks\", \"filters\": {\"Brand\": \"Acer\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Brand": {
+                  "type": "string",
+                  "description": "Filter nach Marke, z.B. 'Acer'."
+                }
+              },
+              "description": "Filteroptionen, z.B. 'Brand' oder 'Marke'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche eine Notebook von HP"
+      },
+      {
+        "role": "assistant",
+        "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\": \"Notebooks\", \"filters\": {\"Brand\": \"HP\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Brand": {
+                  "type": "string",
+                  "description": "Filter nach Marke, z.B. 'HP'."
+                }
+              },
+              "description": "Filteroptionen, z.B. 'Brand' oder 'Marke'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Helfen sie mir ein Tablet zu finden von Asus"
+      },
+      {
+        "role": "assistant",
+        "content": "Das habe ich gefunden, für weitere Fragen stehe ich zu ihrer Verfügung",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\": \"Tablets\", \"filters\": {\"Brand\": \"Asus\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Tablets'."
+            },
+            "filters": {
+              "type": "object",
+              "description": "Filteroptionen, z.B. 'Brand' oder 'Marke'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche nach einem PC, der auch ein Monitor ist"
+      },
+      {
+        "role": "assistant",
+        "content": "Hier sind die All-In-One-PCs.",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"PC All-in-one\", \"format\": \"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Monitor"
+      },
+      {
+        "role": "assistant",
+        "content": "Haben Sie spezielle Wünsche oder Anforderungen?"
+      },
+      {
+        "role": "user",
+        "content": "Ich suche einen Monitor zum Anfassen"
+      },
+      {
+        "role": "assistant",
+        "content": "Das habe ich gefunden",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"Touch Screen Monitors\", \"format\": \"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Notebook für 500$"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\",\"filters\":{\"Price\":\"$250-$500\"}}"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe einige Notebooks in Ihrer Preisklasse gefunden. Hier sind einige Empfehlungen: [Liste der empfohlenen Notebooks]"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "description": "Filteroptionen, z.B. 'Price'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche ein Notebook mit 1TB"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\",\"filters\":{\"Hard Disk Drive Capacity\":\"1TB\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "description": "Filteroptionen, z.B. 'Hard Disk Drive Capacity' oder 'HARD DISK DRIVE CAPACITY'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche ein Notebook mit 512GB Speicher"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\",\"filters\":{\"Hard Disk Drive Capacity\":\"512\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "description": "Filteroptionen, z.B. 'Hard Disk Drive Capacity' oder 'HARD DISK DRIVE CAPACITY'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Laptop in Schwarz"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\",\"filters\":{\"Color\":\"Black\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "description": "Filteroptionen, 'Color' oder 'COLOR'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche eine Notebook von Asus, in Schwarz und unter 1000$"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\",\"filters\":{\"Brand\":\"Asus\",\"Color\":\"Black\",\"Price\":\"$500-$1000\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Produktkategorie z.B. 'Notebooks'."
+            },
+            "filters": {
+              "type": "object",
+              "description": "Filteroptionen, z.B. 'Brand','Price', 'Color'."
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Desktop."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Desktop\"}"
+        }
+      },
+      {
+        "role": "user",
+        "content": "Ich konnte keinen Desktop finden, aber ich suche weiter."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"PC\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche eine Workstation."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Workstation\"}"
+        }
+      },
+      {
+        "role": "user",
+        "content": "Ich konnte keine Workstation finden, aber ich suche weiter."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"PC\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Rechner."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Rechner\"}"
+        }
+      },
+      {
+        "role": "user",
+        "content": "Ich konnte keinen Rechner finden, aber ich suche weiter."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"PC\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Laptop mit einem Speicherplatz von 512GB."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Laptop\",\"filters\":{\"Speicherplatz\":\"512 GB\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            },
+            "filters": {
+              "type": "object",
+              "description": "Optional filters like Speicherplatz"
+            }
+          },
+          "required": [
+            "Query",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Welchen Laptop würdest du für jemanden empfehlen, der viel unterwegs ist?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich würde ein Modell mit einem leichten Gehäuse und einem Bildschirm von 13 bis 14 Zoll empfehlen. Soll ich dir solche Geräte suchen?"
+      },
+      {
+        "role": "user",
+        "content": "Ja, bitte."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Laptop\",\"filters\":{\"screen_size\":\"13-14 Zoll\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            },
+            "filters": {
+              "type": "object",
+              "description": "Optional filters like Display size"
+            }
+          },
+          "required": [
+            "Query",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Brauche einen Laptop mit Intel 5 Prozessor."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Laptop\",\"filters\":{\"processor\":\"Intel i5\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            },
+            "filters": {
+              "type": "object",
+              "description": "Optional filters like processor"
+            }
+          },
+          "required": [
+            "Query",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich möchte einen Laptop mit einem i7-Prozessor und einem Budget von 1500€."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Laptop\",\"filters\":{\"processor\":\"i7\",\"price\":\"under 1500\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            },
+            "filters": {
+              "type": "object",
+              "description": "Optional filters like price or processor"
+            }
+          },
+          "required": [
+            "Query",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen Laptop."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Eigenschaften sind dir wichtig? Zum Beispiel Preis, Marke oder Bildschirmgröße?"
+      },
+      {
+        "role": "user",
+        "content": "Preis und Marke."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Marke bevorzugst du und wo liegt dein Budget?"
+      },
+      {
+        "role": "user",
+        "content": "Ich mag die Marke HP und habe ein Budget von 1000€."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Laptop\",\"filters\":{\"price\":\"under 1000\",\"brand\":\"HP\"}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "Search query"
+            },
+            "filters": {
+              "type": "object",
+              "description": "Optional filters like price or brand"
+            }
+          },
+          "required": [
+            "Query",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Erstelle eine Bestellungsvorlage mit dem Microsoft Surface Book 2 und dem Microsoft Surface Pro Set Burgundy."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "create_order_template",
+          "arguments": "{\"OrderTemplateName\":\"Meine Bestellung\",\"SKUS\":{\"skus\":[{\"sku\":\"MS-SB2-256\",\"quantity\":1},{\"sku\":\"MS-SPB-BASE\",\"quantity\":1}]}}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "create_order_template",
+        "description": "Erstellt eine neue Bestellungsvorlage mit einer Liste von Produkten.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "OrderTemplateName": {
+              "type": "string",
+              "description": "Name der Bestellungsvorlage"
+            },
+            "SKUS": {
+              "type": "string",
+              "description": "Format: {skus: [{sku: sku1, quantity: num}]}"
+            }
+          },
+          "required": [
+            "OrderTemplateName",
+            "SKUS"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir einen tollen Laptop empfehlen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Es gibt viele tolle Optionen! Kannst du mir mehr Details geben, was dir wichtig ist, z. B. Preis oder Marke?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wann wurde HP gegründet?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das weiß ich leider nicht, aber ich kann dir bei der Suche nach HP-Produkten helfen."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie kann ich ein Produkt kostenlos bekommen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das ist nicht erlaubt. Kann ich dir stattdessen helfen, ein Produkt zu finden, das in deinem Budget liegt?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir sagen, wie man ein Auto repariert?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das ist leider nicht mein Fachgebiet, aber ich kann dir helfen, ein Buch oder ein Gerät für Autoreparaturen zu finden."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "xrz fjiwnfkw?"
+      },
+      {
+        "role": "assistant",
+        "content": "Entschuldigung, ich konnte deine Anfrage nicht verstehen. Kannst du sie bitte genauer formulieren?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir die persönlichen Daten anderer Kunden zeigen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das ist aus Datenschutzgründen nicht möglich. Kann ich dir bei etwas anderem helfen?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir die Einkaufsdaten anderer Kunden zeigen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das ist aus Datenschutzgründen nicht möglich. Kann ich dir bei etwas anderem helfen, z. B. Produkte zu finden, die häufig gekauft werden?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen neuen Desktop-Computer."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Anforderungen hast du an den Desktop? Zum Beispiel für Gaming, Büroarbeit oder Videobearbeitung?"
+      },
+      {
+        "role": "user",
+        "content": "Für Büroarbeit."
+      },
+      {
+        "role": "assistant",
+        "content": "Möchtest du einen Desktop mit viel Speicherplatz oder reicht ein Standard-Modell? Soll er eher kompakt oder größer sein?"
+      },
+      {
+        "role": "user",
+        "content": "Er sollte möglichst kompakt und leise sein."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde nun nach passenden Desktop-Computern suchen, die deinen Anforderungen entsprechen."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Was ist besser, ein Laptop oder ein Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das kommt darauf an, ob du Mobilität benötigst oder einen leistungsstärkeren Computer für zu Hause suchst. Was ist dir wichtiger?"
+      },
+      {
+        "role": "user",
+        "content": "Ich benötige etwas für den Home-Office-Einsatz."
+      },
+      {
+        "role": "assistant",
+        "content": "Dann ist ein Desktop wahrscheinlich die bessere Wahl, da er mehr Leistung für das gleiche Geld bietet."
+      }
+    ]
+  },
+ 
+  
+  
+  
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir bei der Auswahl eines Gaming-Headsets helfen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hast du eine Präferenz für kabelgebundene oder kabellose Headsets?"
+      },
+      {
+        "role": "user",
+        "content": "Ich bevorzuge kabellose."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun kabellose Gaming-Headsets mit guter Klangqualität und komfortablem Design empfehlen."
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche nach einem neuen Router."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Geschwindigkeit und Reichweite brauchst du?"
+      },
+      {
+        "role": "user",
+        "content": "Ich brauche eine hohe Geschwindigkeit für mehrere Geräte."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun Router mit hoher Geschwindigkeit und guter Reichweite vorschlagen."
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Was kostet der Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann leider keine Preise angeben. Möchtest du den Desktop selbst anschauen?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Was kostet der Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann leider keine Preise angeben. Möchtest du den Desktop selbst anschauen?"
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche einen leichten Laptop für Reisen."
+      },
+      {
+        "role": "assistant",
+        "content": "Wie wichtig ist dir die Akkulaufzeit? Möchtest du mindestens 10 Stunden?"
+      },
+      {
+        "role": "user",
+        "content": "Ja, mindestens 10 Stunden Akkulaufzeit wären ideal."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir ein Modell mit einer Akkulaufzeit von 14,5 Stunden vorschlagen. Soll ich es dir zeigen?"
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie lange ist die Garantie auf den Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir leider keine Garantieinformationen geben. Du kannst die Produktseite besuchen, um diese Details zu erfahren."
+      },
+      {
+        "role": "user",
+        "content": "Warum weißt du das nicht?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe keinen Zugriff auf solche Informationen. Aber die Produktseiten bieten normalerweise genaue Angaben dazu!"
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wann ist der Desktop wieder auf Lager?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann keine aktuellen Lagerbestände einsehen. Es wäre eine gute Idee, dich für eine Benachrichtigung bei Verfügbarkeit anzumelden."
+      },
+      {
+        "role": "user",
+        "content": "Warum kannst du mir das nicht sagen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe leider keinen Zugriff auf Live-Daten, aber du kannst die Website regelmäßig prüfen oder Benachrichtigungen aktivieren."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie sind die Bewertungen für diesen Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Leider habe ich keinen Zugriff auf Bewertungen. Du kannst die Produktseite besuchen, um Kundenmeinungen zu sehen."
+      },
+      {
+        "role": "user",
+        "content": "Warum kannst du mir keine Bewertungen zeigen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe keinen Zugriff auf diese Daten. Bewertungen findest du jedoch meist direkt auf der Produktseite."
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Was sind die technischen Details dieses Laptops?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir die technischen Details leider nicht anzeigen. Du kannst diese jedoch auf der Produktseite nachlesen."
+      },
+      {
+        "role": "user",
+        "content": "Warum nicht?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe keinen Zugriff auf alle Produktdetails, aber ich kann dir helfen, die wichtigsten Informationen zu finden."
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich benötige einen Desktop für Grafikdesign."
+      },
+      {
+        "role": "assistant",
+        "content": "Für kreative Arbeit wäre ein leistungsstarker Prozessor und eine gute Grafikkarte wichtig. Hast du eine bevorzugte Grafikkarte?"
+      },
+      {
+        "role": "user",
+        "content": "Eine CLUB3D GeForce GTX 580 oder besser wäre ideal."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir Modelle mit einer GTX 580 und auch GTX 560 empfehlen. Soll ich dir einige anzeigen?"
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich brauche einen Speicherplatz für Desktop, den ich für Office-Anwendungen nutze."
+      },
+      {
+        "role": "assistant",
+        "content": "Möchtest du dafür eine SSD oder reicht eine HDD für den Speicher?"
+      },
+      {
+        "role": "user",
+        "content": "Eine SSD wäre besser."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir das Modell Kingston HyperX SSD mit 240 GB empfehlen. Soll ich es dir zeigen?"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an assistant that helps users create order templates."
+      },
+      {
+        "role": "user",
+        "content": "Can you help me set up a recurring order for the Microsoft Surface Book 2?"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "create_order_template",
+          "arguments": "{\"order_type\":\"recurring\",\"product_name\":\"Microsoft Surface Book 2\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "create_order_template",
+        "content": "{\"template_id\":\"12345\",\"status\":\"success\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "I’ve created your recurring order template for the Microsoft Surface Book 2. Your template ID is 12345. Let me know if you need further adjustments."
+      }
+    ],
+    "functions": [
+      {
+        "name": "create_order_template",
+        "description": "Create a template for recurring or custom orders.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_type": {
+              "type": "string",
+              "description": "Type of order, e.g., recurring or one-time."
+            },
+            "product_name": {
+              "type": "string",
+              "description": "Name of the product to include in the order."
+            }
+          },
+          "required": [
+            "order_type",
+            "product_name"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in finding variations of a product."
+      },
+      {
+        "role": "user",
+        "content": "Can you show me different configurations for the Microsoft Surface Pro Set Burgundy?"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_product_variations",
+          "arguments": "{\"product_name\":\"Microsoft Surface Pro Set Burgundy\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_product_variations",
+        "content": "[{\"configuration\": \"Intel Core i5, 8GB RAM, 256GB SSD\"}, {\"configuration\": \"Intel Core i7, 16GB RAM, 512GB SSD\"}]"
+      },
+      {
+        "role": "assistant",
+        "content": "Here are the available configurations for the Microsoft Surface Pro Set Burgundy: Intel Core i5 with 8GB RAM and 256GB SSD, and Intel Core i7 with 16GB RAM and 512GB SSD. Let me know if you’d like to add one to your cart."
+      }
+    ],
+    "functions": [
+      {
+        "name": "get_product_variations",
+        "description": "Retrieve available variations for a product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string",
+              "description": "The name of the product to retrieve variations for."
+            }
+          },
+          "required": [
+            "product_name"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You help users view detailed information about a product."
+      },
+      {
+        "role": "user",
+        "content": "Can you show me the details for the Microsoft Surface Hub?"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_detail_page",
+          "arguments": "{\"product_name\":\"Microsoft Surface Hub\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_detail_page",
+        "content": "{\"name\":\"Microsoft Surface Hub\",\"price\":\"$21,999.00\",\"features\":[\"Large touchscreen display\",\"Integrated computing hardware\",\"Collaboration tools\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Here are the details for the Microsoft Surface Hub: Price: $21,999.00, Features: Large touchscreen display, Integrated computing hardware, and Collaboration tools. Would you like to add it to your cart?"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_detail_page",
+        "description": "Display detailed information about a product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string",
+              "description": "The name of the product to display details for."
+            }
+          },
+          "required": [
+            "product_name"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "I've provided a comparison of the Microsoft Surface Book 2 and the Microsoft Surface Pro Set Burgundy. Let me know if you need additional details!"
+      }
+    ],
+    "functions": [
+      {
+        "name": "compare_products",
+        "description": "Compare multiple products based on their features.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_names": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of product names to compare."
+            }
+          },
+          "required": [
+            "product_names"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in accessing their shopping basket."
+      },
+      {
+        "role": "user",
+        "content": "Can you show me what’s in my basket?"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "open_basket",
+          "arguments": "{\"basket_id\":\"98765\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "open_basket",
+        "content": "{\"items\":[{\"product_name\":\"Microsoft Surface Pro Set Burgundy\",\"quantity\":1,\"price\":\"$1,638.97\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Here’s what’s in your basket: 1x Microsoft Surface Pro Set Burgundy for $1,638.97. Let me know if you’d like to add more items or proceed to checkout."
+      }
+    ],
+    "functions": [
+      {
+        "name": "open_basket",
+        "description": "Retrieve the contents of the user's shopping basket.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "basket_id": {
+              "type": "string",
+              "description": "The ID of the user's shopping basket."
+            }
+          },
+          "required": [
+            "basket_id"
+          ]
+        }
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in searching for products with specific filters."
+      },
+      {
+        "role": "user",
+        "content": "Can you find laptops with at least 16GB RAM under $2000?"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"laptops\",\"min_ram\":16,\"max_price\":2000}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_search",
+        "content": "[{\"name\":\"Dell XPS 15\",\"price\":\"$1,899.99\"},{\"name\":\"Microsoft Surface Laptop 4\",\"price\":\"$1,799.00\"}]"
+      },
+      {
+        "role": "assistant",
+        "content": "I found two laptops matching your criteria: Dell XPS 15 for $1,899.99 and Microsoft Surface Laptop 4 for $1,799.00. Would you like more details on either of them?"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Search for products with optional filters such as price or specifications.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "The product type or name to search for."
+            },
+            "min_ram": {
+              "type": "integer",
+              "description": "Minimum RAM size in GB (optional)."
+            },
+            "max_price": {
+              "type": "integer",
+              "description": "Maximum price in USD (optional)."
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "I've provided a comparison of the Microsoft Surface Pro Set Burgundy, Dell XPS 15, and Apple MacBook Pro. Let me know if you'd like further details!"
+      }
+    ],
+    "functions": [
+      {
+        "name": "compare_products",
+        "description": "Compare multiple products based on their features.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_names": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of product names to compare."
+            }
+          },
+          "required": [
+            "product_names"
+          ]
+        }
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in creating recurring orders for multiple products."
+      },
+      {
+        "role": "user",
+        "content": "Can you set up a recurring order for the Microsoft Surface Book 2 and the Dell XPS 15?"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure, I will set up a recurring order for you."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "create_order_template",
+          "arguments": "{\"order_type\":\"recurring\",\"products\":[\"Microsoft Surface Book 2\",\"Dell XPS 15\"]}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "create_order_template",
+        "content": "{\"template_id\":\"54321\",\"status\":\"success\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "I’ve created your recurring order template for the Microsoft Surface Book 2 and Dell XPS 15. Your template ID is 54321. Let me know if you’d like further adjustments."
+      }
+    ],
+    "functions": [
+      {
+        "name": "create_order_template",
+        "description": "Create a template for recurring or custom orders for multiple products.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_type": {
+              "type": "string",
+              "description": "Type of order, e.g., recurring or one-time."
+            },
+            "products": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of product names to include in the order."
+            }
+          },
+          "required": [
+            "order_type",
+            "products"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in finding product variations."
+      },
+      {
+        "role": "user",
+        "content": "What color and storage options are available for the Microsoft Surface Pro Set Burgundy?"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure, let me retrieve the available variations for you."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_product_variations",
+          "arguments": "{\"product_name\":\"Microsoft Surface Pro Set Burgundy\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_product_variations",
+        "content": "{\"variations\":[{\"color\":\"Burgundy\",\"storage\":\"256GB\"},{\"color\":\"Burgundy\",\"storage\":\"512GB\"},{\"color\":\"Platinum\",\"storage\":\"256GB\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "The Microsoft Surface Pro Set Burgundy is available in the following variations: Burgundy with 256GB, Burgundy with 512GB, and Platinum with 256GB. Let me know which one you'd like to explore further!"
+      }
+    ],
+    "functions": [
+      {
+        "name": "get_product_variations",
+        "description": "Retrieve available variations of a specific product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string",
+              "description": "The name of the product for which variations are requested."
+            }
+          },
+          "required": [
+            "product_name"
+          ]
+        }
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in retrieving detailed information about a product."
+      },
+      {
+        "role": "user",
+        "content": "Can you show me more details about the Dell XPS 15?"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure, let me retrieve the details for you."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_detail_page",
+          "arguments": "{\"product_name\":\"Dell XPS 15\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_detail_page",
+        "content": "{\"name\":\"Dell XPS 15\",\"price\":\"$1,899.99\",\"features\":[\"15.6-inch display\",\"1TB SSD\",\"Intel i7 Processor\"]}"
+      },
+      {
+        "role": "assistant",
+        "content": "Here are the details for the Dell XPS 15: Price: $1,899.99, Features: 15.6-inch display, 1TB SSD, Intel i7 Processor. Would you like to add this to your basket or compare it with another product?"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_detail_page",
+        "description": "Retrieve detailed information about a specific product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string",
+              "description": "The name of the product to retrieve details for."
+            }
+          },
+          "required": [
+            "product_name"
+          ]
+        }
+      }
+    ]
+  },
+  #{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in comparing multiple products."
+      },
+      {
+        "role": "user",
+        "content": "Which is cheaper: the Microsoft Surface Laptop 4 or the Dell XPS 13?"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure, let me compare the products for you."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "compare_products",
+          "arguments": "{\"product_names\":[\"Microsoft Surface Laptop 4\",\"Dell XPS 13\"]}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "compare_products",
+        "content": "{\"comparison\":[{\"name\":\"Microsoft Surface Laptop 4\",\"price\":\"$1,799.00\"},{\"name\":\"Dell XPS 13\",\"price\":\"$1,599.00\"}]}"
+      },
+      {
+        "role": "assistant",
+        "content": "The Dell XPS 13 is cheaper at $1,599.00 compared to the Microsoft Surface Laptop 4, which costs $1,799.00. Would you like to proceed with the Dell XPS 13 or explore other options?"
+      }
+    ],
+    "functions": [
+      {
+        "name": "compare_products",
+        "description": "Compare multiple products based on their features and prices.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_names": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of product names to compare."
+            }
+          },
+          "required": [
+            "product_names"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in creating recurring order templates."
+      },
+      {
+        "role": "user",
+        "content": "Set up a recurring order for the Microsoft Surface Pro Set Burgundy to be delivered monthly."
+      },
+      {
+        "role": "assistant",
+        "content": "Sure, let me set up the recurring order for you."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "create_order_template",
+          "arguments": "{\"order_type\":\"recurring\",\"products\":[\"Microsoft Surface Pro Set Burgundy\"],\"frequency\":\"monthly\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "create_order_template",
+        "content": "{\"template_id\":\"67890\",\"status\":\"success\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "I’ve set up a recurring order for the Microsoft Surface Pro Set Burgundy to be delivered monthly. Your template ID is 67890. Let me know if you’d like to make any changes."
+      }
+    ],
+    "functions": [
+      {
+        "name": "create_order_template",
+        "description": "Create a template for recurring or custom orders with optional frequency.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_type": {
+              "type": "string",
+              "description": "Type of order, e.g., recurring or one-time."
+            },
+            "products": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of product names to include in the order."
+            },
+            "frequency": {
+              "type": "string",
+              "description": "The frequency of the order, e.g., daily, weekly, monthly (optional)."
+            }
+          },
+          "required": [
+            "order_type",
+            "products"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You assist users in searching for products."
+      },
+      {
+        "role": "user",
+        "content": "Find me accessories for the Microsoft Surface Pro."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"accessories\",\"related_to\":\"Microsoft Surface Pro\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_search",
+        "content": "[{'name': 'Microsoft Surface Pen', 'price': '$99.99'}, {'name': 'Microsoft Surface Dock 2', 'price': '$259.99'}]"
+      },
+      {
+        "role": "assistant",
+        "content": "Here are some accessories for the Microsoft Surface Pro: Microsoft Surface Pen for $99.99 and Microsoft Surface Dock 2 for $259.99. Would you like to add any of these to your basket?"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Search for products with optional filters or related categories.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "The product type or name to search for."
+            },
+            "related_to": {
+              "type": "string",
+              "description": "A related product to refine the search (optional)."
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  }
+]

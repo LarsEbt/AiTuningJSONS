@@ -1,0 +1,904 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich brauche einen neuen Laptop."
+      },
+      {
+        "role": "assistant",
+        "content": "Was ist dir bei einem Laptop am wichtigsten: Leistung, Akkulaufzeit oder vielleicht das Design?"
+      },
+      {
+        "role": "user",
+        "content": "Die Akkulaufzeit ist mir am wichtigsten."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Bildschirmgröße bevorzugst du?"
+      },
+      {
+        "role": "user",
+        "content": "Etwa 15 Zoll."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde nun nach Laptops suchen, die besonders lange Akkulaufzeiten bieten und eine Bildschirmgröße von etwa 15 Zoll haben.",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\", \"filters\":{\"Display size\":\"15\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Display size": {
+                  "type": "string",
+                  "description": "size of the display"
+                }
+              },
+              "required": [
+                "Display size"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich möchte einen Gaming-Desktop kaufen."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Art von Spielen spielst du am häufigsten? Das hilft, die passende Leistung zu bestimmen."
+      },
+      {
+        "role": "user",
+        "content": "Ich spiele vor allem Shooter und Open-World-Spiele."
+      },
+      {
+        "role": "assistant",
+        "content": "Für diese Art von Spielen empfehle ich einen Desktop mit leistungsstarker Grafikkarte und schneller CPU. Soll der Desktop auch Platz für Upgrades bieten?"
+      },
+      {
+        "role": "user",
+        "content": "Ja, er sollte erweiterbar sein."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun einige Gaming-Desktops vorschlagen, die auf diese Anforderungen abgestimmt sind.",
+        "function_call": {
+          "name": "product_search",
+          "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+          "arguments": "{\"Query\":\"Acer Predator\",\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Was sind die besten Laptops für Videobearbeitung?"
+      },
+      {
+        "role": "assistant",
+        "content": "Für die Videobearbeitung sind eine leistungsstarke CPU und viel RAM entscheidend. Bevorzugst du einen Mac oder einen Windows-Laptop?"
+      },
+      {
+        "role": "user",
+        "content": "Ich bevorzuge einen Windows-Laptop."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun eine Liste der besten Windows-Laptops für Videobearbeitung zusammenstellen.",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Notebooks\",\"filters\":{\"Hard disk drive capacity\":\"1TB\", \"Price\":\">= $ 1000\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information.if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Hard disk drive capacity": {
+                  "type": "string",
+                  "description": "capacity of the hard disk drive"
+                },
+                "Price": {
+                  "type": "string",
+                  "description": "price of the product"
+                }
+              },
+              "required": [
+                "Hard disk drive capacity",
+                "Price"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hast du Laptops für Studenten?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ja, ich habe eine Auswahl von Laptops, die gut für das Studium geeignet sind. Soll der Laptop leicht und tragbar sein?"
+      },
+      {
+        "role": "user",
+        "content": "Ja, er sollte auch eine gute Akkulaufzeit haben."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann nicht nach Akkuzeit Filtern, kann ich nach anderen Eigenschaften suchen?."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche nach einem Tablet für das Zeichnen."
+      },
+      {
+        "role": "assistant",
+        "content": "Dieses Tablet sollte gut sein fürs Zeichnen :)",
+        "fuction_call": {
+          "name": "product_search",
+          "arguments": "{\"category\":\"Tablets\",\"filters\":{\"Brand\":\"Microsoft\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information.if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Brand": {
+                  "type": "string",
+                  "description": "Brand of the product"
+                }
+              },
+              "required": [
+                "Brand"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Welches Betriebssystem ist besser für mich, Windows oder MacOS?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das kommt darauf an, wofür du den Computer hauptsächlich nutzen möchtest. Möchtest du ihn für Office-Anwendungen oder für kreative Arbeit nutzen?"
+      },
+      {
+        "role": "user",
+        "content": "Ich arbeite viel mit kreativen Programmen wie Photoshop."
+      },
+      {
+        "role": "assistant",
+        "content": "In diesem Fall wäre ein MacOS-Computer besser geeignet, da er eine nahtlose Integration mit kreativen Softwarelösungen bietet."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich brauche einen simplen Monitor für mein Wohnzimmer."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Brand möchtest du und welche Funktionen sind dir wichtig?"
+      },
+      {
+        "role": "user",
+        "content": "HP."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir Monitore von hp und den besten Funktionen empfehlen.",
+        "fuction_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"Flat Panel Displays\",\"category\":\"Monitors\",\"filters\":{\"Brand\":\"HP\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information.if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            },
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Brand": {
+                  "type": "string",
+                  "description": "Brand of the product"
+                }
+              },
+              "required": [
+                "Brand"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hast du Empfehlungen für eine externe Festplatte?"
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Kapazität und Geschwindigkeit benötigst du?"
+      },
+      {
+        "role": "user",
+        "content": "Mindestens 1TB und schnelle Übertragung."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun einige schnelle und zuverlässige externe Festplatten mit 1TB oder mehr vorschlagen.",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Solid State Drives\",\"category\":\"Computers\",\"filters\":{\"Hard disk drive capacity\":\"1TB\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information.if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            },
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Hard disk drive capacity": {
+                  "type": "string",
+                  "description": "capacity of the hard disk drive"
+                }
+              },
+              "required": [
+                "Hard disk drive capacity"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kannst du mir bei der Auswahl eines Gaming-Headsets helfen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hast du eine Preisgrenze oder spezielle Anforderungen an das Headset?"
+      },
+      {
+        "role": "user",
+        "content": "unter 25$"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun kabellose Gaming-Headsets mit guter Klangqualität und komfortablem Design empfehlen.",
+        "fuction_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Headsets\",\"category\":\"Computers\",\"filters\":{\"Price\":\"<= $25\",\"Brand\":\"Creative Labs\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information.if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            },
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Price": {
+                  "type": "string",
+                  "description": "price of the product"
+                },
+                "Brand": {
+                  "type": "string",
+                  "description": "Brand of the product"
+                }
+              },
+              "required": [
+                "Price",
+                "Brand"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche nach einem neuen Router."
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Geschwindigkeit und Reichweite brauchst du?"
+      },
+      {
+        "role": "user",
+        "content": "Ich brauche eine hohe Geschwindigkeit für mehrere Geräte."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun Router mit hoher Geschwindigkeit und guter Reichweite vorschlagen.",
+        "fuction_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Routers\",\"category\":\"Networks\",\"filters\":{\"Brand\":\"AVM\"},\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "searches for products and their information.if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft'A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            },
+            "category": {
+              "type": "string",
+              "description": "category of the product"
+            },
+            "filters": {
+              "type": "object",
+              "properties": {
+                "Brand": {
+                  "type": "string",
+                  "description": "Brand of the product"
+                }
+              },
+              "required": [
+                "Brand"
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "filters"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie lange ist die Garantie auf den Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir leider keine Garantieinformationen geben. Ich kann dich zur About us Seite weiterleiten, da werden solche Themen geklärt."
+      },
+      {
+        "role": "user",
+        "content": "Ja, bring mich zu der Seite"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe dich Weitergelietet. :)",
+        "function_call": {
+          "name": "open_aboutus",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "open_aboutus",
+        "description": "Brings the user to the about us Page",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wann ist der Desktop wieder auf Lager?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann keine aktuellen Lagerbestände einsehen. Es wäre eine gute Idee, dich für eine Benachrichtigung bei Verfügbarkeit anzumelden."
+      },
+      {
+        "role": "user",
+        "content": "Warum kannst du mir das nicht sagen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe leider keinen Zugriff auf Live-Daten, aber du kannst die Website regelmäßig prüfen oder Benachrichtigungen aktivieren."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich benötige einen Desktop für Grafikdesign."
+      },
+      {
+        "role": "assistant",
+        "content": "Für kreative Arbeit wäre ein leistungsstarker Prozessor und eine gute Grafikkarte wichtig. Hast du eine bevorzugte Grafikkarte?"
+      },
+      {
+        "role": "user",
+        "content": "Eine CLUB3D GeForce GTX 580 oder besser wäre ideal."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir Modelle mit einer GTX 580 und auch GTX 560 empfehlen. Soll ich dir einige anzeigen?"
+      },
+      {
+        "role": "user",
+        "content": "Ja, bitte."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun einige Desktops mit einer CLUB3D GeForce GTX 580 oder besser empfehlen.",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\":\"Acer Predator\",\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string",
+              "description": "search query"
+            }
+          },
+          "required": [
+            "Query"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich brauche mehr Speicherplatz für Desktop, den ich für Office-Anwendungen nutze."
+      },
+      {
+        "role": "assistant",
+        "content": "Möchtest du dafür eine SSD oder reicht eine HDD für den Speicher?"
+      },
+      {
+        "role": "user",
+        "content": "Eine SSD wäre besser."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich kann dir das Modell Kingston HyperX SSD mit 240 GB empfehlen. Soll ich es dir zeigen?"
+      },
+      {
+        "role": "user",
+        "content": "Ja, bitte."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun das Modell Kingston HyperX SSD mit 240 GB empfehlen.",
+        "function_call": {
+          "name": "product_detail_page",
+          "arguments": "{\"SKU\":\"9602367\",\"format\":\"string\"}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_detail_page",
+        "description": "open the product detail page using the sku.Use this function when the user wants to see a product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "SKU": {
+              "type": "string",
+              "description": "Stock Keeping Unit of the product"
+            }
+          },
+          "required": [
+            "SKU"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hast du Empfehlungen für eine externe Festplatte?"
+      },
+      {
+        "role": "assistant",
+        "content": "Welche Kapazität und Geschwindigkeit benötigst du?"
+      },
+      {
+        "role": "user",
+        "content": "Mindestens 1TB und schnelle Übertragung."
+      },
+      {
+        "role": "assistant",
+        "content": "Ich werde dir nun einige schnelle und zuverlässige externe Festplatten mit 1TB oder mehr vorschlagen."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche nach einen Laptop von HP"
+      },
+      {
+        "role": "assistant",
+        "content": "Hier sind Notebooks von HP",
+        "function_call": {
+          "name": "get_product_categories",
+          "arguments": "{\"mainCategory\": \"Laptop\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_product_categories",
+        "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Tablets\",\n      \"id\": \"897\",\n      \"subCategories\": [\n        {\n          \"name\": \"Acer\",\n          \"id\": \"897_Acer\"\n        },\n        {\n          \"name\": \"Asus\",\n          \"id\": \"897_Asus\"\n        },\n        {\n          \"name\": \"Fujitsu\",\n          \"id\": \"897_Fujitsu\"\n        },\n        {\n          \"name\": \"HP\",\n          \"id\": \"897_HP\"\n        },\n        {\n          \"name\": \"Hanvon\",\n          \"id\": \"897_Hanvon\"\n        },\n        {\n          \"name\": \"Lenovo\",\n          \"id\": \"897_Lenovo\"\n        },\n        {\n          \"name\": \"MSI\",\n          \"id\": \"897_MSI\"\n        },\n        {\n          \"name\": \"Microsoft\",\n          \"id\": \"897_Microsoft\"\n        },\n        {\n          \"name\": \"Samsung\",\n          \"id\": \"897_Samsung\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        },\n        {\n          \"name\": \"PCs\",\n          \"id\": \"153\"\n        },\n        {\n          \"name\": \"Backpacks, Notebook Bags & Cases\",\n          \"id\": \"3003\"\n        },\n        {\n          \"name\": \"Docking Stations\",\n          \"id\": \"152\"\n        },\n        {\n          \"name\": \"Ergonomic Wrist Rests\",\n          \"id\": \"9851\"\n        },\n        {\n          \"name\": \"Notebook Accessories\",\n          \"id\": \"1284\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Monitors\",\n      \"id\": \"3001\",\n      \"subCategories\": [\n        {\n          \"name\": \"Flat Panel Displays\",\n          \"id\": \"222\"\n        },\n        {\n          \"name\": \"Flat Panel Mounts\",\n          \"id\": \"3002\"\n        },\n        {\n          \"name\": \"Monitor Glare & Privacy Filters\",\n          \"id\": \"943\"\n        },\n        {\n          \"name\": \"Plasma Panels\",\n          \"id\": \"903\"\n        },\n        {\n          \"name\": \"Touch Screen Monitors\",\n          \"id\": \"223\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Input Devices\",\n      \"id\": \"191\",\n      \"subCategories\": [\n        {\n          \"name\": \"Keyboards\",\n          \"id\": \"194\"\n        },\n        {\n          \"name\": \"Mice\",\n          \"id\": \"195\"\n        },\n        {\n          \"name\": \"Headsets\",\n          \"id\": \"1637\"\n        },\n        {\n          \"name\": \"Digital Pens\",\n          \"id\": \"3652\"\n        },\n        {\n          \"name\": \"Presentation Devices\",\n          \"id\": \"8547\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Data Storage\",\n      \"id\": \"206\",\n      \"subCategories\": [\n        {\n          \"name\": \"Blu-ray (re)writers\",\n          \"id\": \"1622\"\n        },\n        {\n          \"name\": \"CD/DVD (Re)Writers\",\n          \"id\": \"214\"\n        },\n        {\n          \"name\": \"Card Readers\",\n          \"id\": \"858\"\n        },\n        {\n          \"name\": \"External Hard Drives\",\n          \"id\": \"1823\"\n        },\n        {\n          \"name\": \"Flash Memory\",\n          \"id\": \"902\"\n        },\n        {\n          \"name\": \"Hard Disk Drives\",\n          \"id\": \"219\"\n        },\n        {\n          \"name\": \"Solid State Drives\",\n          \"id\": \"1563\"\n        },\n        {\n          \"name\": \"Storage Media Cases\",\n          \"id\": \"298\"\n        },\n        {\n          \"name\": \"USB Flash Drives\",\n          \"id\": \"1554\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Hardware Components\",\n      \"id\": \"106\",\n      \"subCategories\": [\n        {\n          \"name\": \"Audio Cards\",\n          \"id\": \"173\"\n        },\n        {\n          \"name\": \"Cables\",\n          \"id\": \"830\",\n          \"subCategories\": [\n            {\n              \"name\": \"Audio/Video Cables\",\n              \"id\": \"1307\"\n            },\n            {\n              \"name\": \"Cable Interface/Gender Adapters\",\n              \"id\": \"1501\"\n            },\n            {\n              \"name\": \"Firewire Cables\",\n              \"id\": \"1306\"\n            },\n            {\n              \"name\": \"SATA Cables\",\n              \"id\": \"1303\"\n            },\n            {\n              \"name\": \"Usb Cables\",\n              \"id\": \"1158\"\n            }\n          ]\n        },\n        {\n          \"name\": \"Chassis Components\",\n          \"id\": \"236\",\n          \"subCategories\": [\n            {\n              \"name\": \"Fans, coolers & radiators\",\n              \"id\": \"921\"\n            },\n            {\n              \"name\": \"Mounting Kits\",\n              \"id\": \"1007\"\n            },\n            {\n              \"name\": \"Rack Consoles\",\n              \"id\": \"1500\"\n            },\n            {\n              \"name\": \"Storage Enclosures\",\n              \"id\": \"862\"\n            }\n          ]\n        },\n        {\n          \"name\": \"Memory Modules\",\n          \"id\": \"911\"\n        },\n        {\n          \"name\": \"Motherboards\",\n          \"id\": \"164\"\n        },\n        {\n          \"name\": \"Power Supplies\",\n          \"id\": \"816\",\n          \"subCategories\": [\n            {\n              \"name\": \"Battery Chargers\",\n              \"id\": \"829\"\n            },\n            {\n              \"name\": \"Power Adapters & Inverters\",\n              \"id\": \"827\"\n            },\n            {\n              \"name\": \"Power Supply Units\",\n              \"id\": \"963\"\n            },\n            {\n              \"name\": \"Rechargeable Batteries\",\n              \"id\": \"814\"\n            },\n            {\n              \"name\": \"Surge Protectors\",\n              \"id\": \"1388\"\n            }\n          ]\n        },\n        {\n          \"name\": \"Processors\",\n          \"id\": \"989\"\n        },\n        {\n          \"name\": \"Video Cards\",\n          \"id\": \"170\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Printers\",\n      \"id\": \"225\",\n      \"subCategories\": [\n        {\n          \"name\": \"Inkjet Printers\",\n          \"id\": \"234\"\n        },\n        {\n          \"name\": \"Laser/LED Printers\",\n          \"id\": \"235\"\n        },\n        {\n          \"name\": \"Multifunctionals\",\n          \"id\": \"304\"\n        },\n        {\n          \"name\": \"Photo Printers\",\n          \"id\": \"922\"\n        },\n        {\n          \"name\": \"Printing Supplies\",\n          \"id\": \"373\",\n          \"subCategories\": [\n            {\n              \"name\": \"Ink Cartridges\",\n              \"id\": \"377\"\n            },\n            {\n              \"name\": \"Printer Paper\",\n              \"id\": \"692\"\n            },\n            {\n              \"name\": \"Toners & Laser Cartridges\",\n              \"id\": \"375\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_productcategory_filters",
+          "arguments": "{\"mainCategoryId\": \"1835\", \"subCategoryId\": \"151\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_productcategory_filters",
+        "content": "{\"Sollte einen Json Datensatz zurück geben den ich nicht einsehen kann\"}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"Notebook\", \"mainCategoryId\": \"1835\", \"subCategoryId\": \"151\", \"filters\": {\"brand\": \"HP\"}}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_search",
+        "content": "{{ \"name\": \"HP ProBook 11 EE G1\", \"price\": \"$668.54\", \"Display\": \"11.6\", \"brand\": \"HP\", \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/0889296696803\" }, { \"name\": \"HP ProBook 6550b Notebook PC\", \"price\": \"$1000\", \"Display\": \"15.6\", \"brand\": \"HP\", \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/5079807\"}}"
+      }
+    ],
+    "functions": [
+      {
+        "name": "get_product_categories",
+        "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategory": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "mainCategory"
+          ]
+        }
+      },
+      {
+        "name": "get_productcategory_filters",
+        "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "subsubCategoryId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "mainCategoryId",
+            "subCategoryId"
+          ]
+        }
+      },
+      {
+        "name": "product_search",
+        "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string"
+            },
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "Query",
+            "mainCategoryId"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich suche nach einem Laptop von HP"
+      },
+      {
+        "role": "assistant",
+        "content": "Hier sind Notebooks von HP",
+        "function_call": {
+          "name": "get_product_categories",
+          "arguments": "{\"mainCategory\": \"Laptop\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_product_categories",
+        "content": "{\"category\": {\"name\": \"Computers\", \"id\": \"Computers\", \"subCategories\": [{\"name\": \"Tablets\", \"id\": \"897\", \"subCategories\": [{\"name\": \"HP\", \"id\": \"897_HP\"}]}]}}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_productcategory_filters",
+          "arguments": "{\"mainCategoryId\": \"1835\", \"subCategoryId\": \"151\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_productcategory_filters",
+        "content": "{\"message\": \"No data available for the requested filters.\"}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"Query\": \"Notebook\", \"mainCategoryId\": \"1835\", \"subCategoryId\": \"151\", \"filters\": {\"brand\": \"HP\"}}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_search",
+        "content": "[{\"name\": \"HP ProBook 11 EE G1\", \"price\": \"$668.54\", \"Display\": \"11.6\", \"brand\": \"HP\", \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/0889296696803\"}, {\"name\": \"HP ProBook 6550b Notebook PC\", \"price\": \"$1000\", \"Display\": \"15.6\", \"brand\": \"HP\", \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/5079807\"}]"
+      }
+    ],
+    "functions": [
+      {
+        "name": "get_product_categories",
+        "description": "Returns all subcategories with their ID from a main category.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategory": {
+              "type": "string",
+              "description": "Main category for product search",
+              "enum": [
+                "3D_print",
+                "Computers",
+                "presentation-conferencing",
+                "Home-Entertainment",
+                "networks",
+                "servers",
+                "specials"
+              ]
+            }
+          },
+          "required": [
+            "mainCategory"
+          ]
+        }
+      },
+      {
+        "name": "get_productcategory_filters",
+        "description": "Gets the filters that can be applied to the product search.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "mainCategoryId",
+            "subCategoryId"
+          ]
+        }
+      },
+      {
+        "name": "product_search",
+        "description": "Searches for products based on query, categories, or filters. Filters should be provided as key-value pairs (e.g., 'brand=Microsoft'). Filters are optional and can be combined with query and categories.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string"
+            },
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "Query",
+            "mainCategoryId"
+          ]
+        }
+      }
+    ]
+  }
+]
