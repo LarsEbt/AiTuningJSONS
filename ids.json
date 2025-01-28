@@ -1,4 +1,5 @@
-[{ "name": "Computers", "id": "Computers", "subCategories": [ { "name": "Tablets", "id": "897", "subCategories": [ { "name": "Acer", "id": "897_Acer" }, { "name": "Asus", "id": "897_Asus" }, { "name": "Fujitsu", "id": "897_Fujitsu" }, { "name": "HP", "id": "897_HP" }, { "name": "Hanvon", "id": "897_Hanvon" }, { "name": "Lenovo", "id": "897_Lenovo" }, { "name": "MSI", "id": "897_MSI" }, { "name": "Microsoft", "id": "897_Microsoft" }, { "name": "Samsung", "id": "897_Samsung" } ] }, { "name": "Notebooks and PCs", "id": "1835", "subCategories": [ { "name": "Notebooks", "id": "151" }, { "name": "PCs", "id": "153" }, { "name": "Backpacks, Notebook Bags & Cases", "id": "3003" }, { "name": "Docking Stations", "id": "152" }, { "name": "Ergonomic Wrist Rests", "id": "9851" }, { "name": "Notebook Accessories", "id": "1284" } ] }, { "name": "Monitors", "id": "3001", "subCategories": [ { "name": "Flat Panel Displays", "id": "222" }, { "name": "Flat Panel Mounts", "id": "3002" }, { "name": "Monitor Glare & Privacy Filters", "id": "943" }, { "name": "Plasma Panels", "id": "903" }, { "name": "Touch Screen Monitors", "id": "223" } ] }, { "name": "Input Devices", "id": "191", "subCategories": [ { "name": "Keyboards", "id": "194" }, { "name": "Mice", "id": "195" }, { "name": "Headsets", "id": "1637" }, { "name": "Digital Pens", "id": "3652" }, { "name": "Presentation Devices", "id": "8547" } ] }, { "name": "Data Storage", "id": "206", "subCategories": [ { "name": "Blu-ray (re)writers", "id": "1622" }, { "name": "CD/DVD (Re)Writers", "id": "214" }, { "name": "Card Readers", "id": "858" }, { "name": "External Hard Drives", "id": "1823" }, { "name": "Flash Memory", "id": "902" }, { "name": "Hard Disk Drives", "id": "219" }, { "name": "Solid State Drives", "id": "1563" }, { "name": "Storage Media Cases", "id": "298" }, { "name": "USB Flash Drives", "id": "1554" } ] }, { "name": "Hardware Components", "id": "106", "subCategories": [ { "name": "Audio Cards", "id": "173" }, { "name": "Cables", "id": "830", "subCategories": [ { "name": "Audio/Video Cables", "id": "1307" }, { "name": "Cable Interface/Gender Adapters", "id": "1501" }, { "name": "Firewire Cables", "id": "1306" }, { "name": "SATA Cables", "id": "1303" }, { "name": "Usb Cables", "id": "1158" } ] }, { "name": "Chassis Components", "id": "236", "subCategories": [ { "name": "Fans, coolers & radiators", "id": "921" }, { "name": "Mounting Kits", "id": "1007" }, { "name": "Rack Consoles", "id": "1500" }, { "name": "Storage Enclosures", "id": "862" } ] }, { "name": "Memory Modules", "id": "911" }, { "name": "Motherboards", "id": "164" }, { "name": "Power Supplies", "id": "816", "subCategories": [ { "name": "Battery Chargers", "id": "829" }, { "name": "Power Adapters & Inverters", "id": "827" }, { "name": "Power Supply Units", "id": "963" }, { "name": "Rechargeable Batteries", "id": "814" }, { "name": "Surge Protectors", "id": "1388" } ] }, { "name": "Processors", "id": "989" }, { "name": "Video Cards", "id": "170" } ] }, { "name": "Printers", "id": "225", "subCategories": [ { "name": "Inkjet Printers", "id": "234" }, { "name": "Laser/LED Printers", "id": "235" }, { "name": "Multifunctionals", "id": "304" }, { "name": "Photo Printers", "id": "922" }, { "name": "Printing Supplies", "id": "373", "subCategories": [ { "name": "Ink Cartridges", "id": "377" }, { "name": "Printer Paper", "id": "692" }, { "name": "Toners & Laser Cartridges", "id": "375" } ] } ] } ] },
+[
+  { "name": "Computers", "id": "Computers", "subCategories": [ { "name": "Tablets", "id": "897", "subCategories": [ { "name": "Acer", "id": "897_Acer" }, { "name": "Asus", "id": "897_Asus" }, { "name": "Fujitsu", "id": "897_Fujitsu" }, { "name": "HP", "id": "897_HP" }, { "name": "Hanvon", "id": "897_Hanvon" }, { "name": "Lenovo", "id": "897_Lenovo" }, { "name": "MSI", "id": "897_MSI" }, { "name": "Microsoft", "id": "897_Microsoft" }, { "name": "Samsung", "id": "897_Samsung" } ] }, { "name": "Notebooks and PCs", "id": "1835", "subCategories": [ { "name": "Notebooks", "id": "151" }, { "name": "PCs", "id": "153" }, { "name": "Backpacks, Notebook Bags & Cases", "id": "3003" }, { "name": "Docking Stations", "id": "152" }, { "name": "Ergonomic Wrist Rests", "id": "9851" }, { "name": "Notebook Accessories", "id": "1284" } ] }, { "name": "Monitors", "id": "3001", "subCategories": [ { "name": "Flat Panel Displays", "id": "222" }, { "name": "Flat Panel Mounts", "id": "3002" }, { "name": "Monitor Glare & Privacy Filters", "id": "943" }, { "name": "Plasma Panels", "id": "903" }, { "name": "Touch Screen Monitors", "id": "223" } ] }, { "name": "Input Devices", "id": "191", "subCategories": [ { "name": "Keyboards", "id": "194" }, { "name": "Mice", "id": "195" }, { "name": "Headsets", "id": "1637" }, { "name": "Digital Pens", "id": "3652" }, { "name": "Presentation Devices", "id": "8547" } ] }, { "name": "Data Storage", "id": "206", "subCategories": [ { "name": "Blu-ray (re)writers", "id": "1622" }, { "name": "CD/DVD (Re)Writers", "id": "214" }, { "name": "Card Readers", "id": "858" }, { "name": "External Hard Drives", "id": "1823" }, { "name": "Flash Memory", "id": "902" }, { "name": "Hard Disk Drives", "id": "219" }, { "name": "Solid State Drives", "id": "1563" }, { "name": "Storage Media Cases", "id": "298" }, { "name": "USB Flash Drives", "id": "1554" } ] }, { "name": "Hardware Components", "id": "106", "subCategories": [ { "name": "Audio Cards", "id": "173" }, { "name": "Cables", "id": "830", "subCategories": [ { "name": "Audio/Video Cables", "id": "1307" }, { "name": "Cable Interface/Gender Adapters", "id": "1501" }, { "name": "Firewire Cables", "id": "1306" }, { "name": "SATA Cables", "id": "1303" }, { "name": "Usb Cables", "id": "1158" } ] }, { "name": "Chassis Components", "id": "236", "subCategories": [ { "name": "Fans, coolers & radiators", "id": "921" }, { "name": "Mounting Kits", "id": "1007" }, { "name": "Rack Consoles", "id": "1500" }, { "name": "Storage Enclosures", "id": "862" } ] }, { "name": "Memory Modules", "id": "911" }, { "name": "Motherboards", "id": "164" }, { "name": "Power Supplies", "id": "816", "subCategories": [ { "name": "Battery Chargers", "id": "829" }, { "name": "Power Adapters & Inverters", "id": "827" }, { "name": "Power Supply Units", "id": "963" }, { "name": "Rechargeable Batteries", "id": "814" }, { "name": "Surge Protectors", "id": "1388" } ] }, { "name": "Processors", "id": "989" }, { "name": "Video Cards", "id": "170" } ] }, { "name": "Printers", "id": "225", "subCategories": [ { "name": "Inkjet Printers", "id": "234" }, { "name": "Laser/LED Printers", "id": "235" }, { "name": "Multifunctionals", "id": "304" }, { "name": "Photo Printers", "id": "922" }, { "name": "Printing Supplies", "id": "373", "subCategories": [ { "name": "Ink Cartridges", "id": "377" }, { "name": "Printer Paper", "id": "692" }, { "name": "Toners & Laser Cartridges", "id": "375" } ] } ] } ] },
 
 
 (PC) filter
@@ -320,5 +321,125 @@
         ]
       }
     ]
-  }
+  },
+laptop filter
+{
+  "elements": [
+    {
+      "name": "Supplier",
+      "type": "Filter",
+      "id": "SupplierName",
+      "filterEntries": [
+        {
+          "name": "SupplierName=inSPIRED"
+        },
+        {
+          "name": "SupplierName=IQ"
+        }
+      ]
+    },
+    {
+      "name": "Brand",
+      "type": "Filter",
+      "id": "ManufacturerName",
+      "filterEntries": [
+        {
+          "name": "ManufacturerName=Microsoft"
+        },
+        {
+          "name": "ManufacturerName=Asus"
+        },
+        {
+          "name": "ManufacturerName=HP"
+        },
+        {
+          "name": "ManufacturerName=Lenovo"
+        },
+        {
+          "name": "ManufacturerName=Targus"
+        }
+      ]
+    },
+    {
+      "name": "Price",
+      "type": "Filter",
+      "id": "ProductSalePriceNet",
+      "filterEntries": [
+        {
+          "name": "ProductSalePriceNet=[250.0 TO 499.99]"
+        },
+        {
+          "name": "ProductSalePriceNet=[500.0 TO 999.999]"
+        },
+        {
+          "name": "ProductSalePriceNet=[1000.0 TO *]"
+        }
+      ]
+    },
+    {
+      "name": "Color",
+      "type": "Filter",
+      "id": "Colour_of_product",
+      "filterEntries": [
+        {
+          "name": "Colour_of_product=Black"
+        },
+        {
+          "name": "Colour_of_product=Brown"
+        },
+        {
+          "name": "Colour_of_product=Silver"
+        },
+        {
+          "name": "Colour_of_product=Platinum"
+        },
+        {
+          "name": "Colour_of_product=Burgundy"
+        },
+        {
+          "name": "Colour_of_product=Cobalt Blue"
+        },
+        {
+          "name": "Colour_of_product=Graphite Gold"
+        }
+      ]
+    },
+    {
+      "name": "Hard disk drive capacity",
+      "type": "Filter",
+      "id": "Hard_disk_drive_capacity",
+      "filterEntries": [
+        {
+          "name": "Hard_disk_drive_capacity=256GB"
+        },
+        {
+          "name": "Hard_disk_drive_capacity=512GB"
+        },
+        {
+          "name": "Hard_disk_drive_capacity=1TB"
+        }
+      ]
+    },
+    {
+      "name": "Display size",
+      "type": "Filter",
+      "id": "attr_displaysize",
+      "filterEntries": [
+        {
+          "name": "attr_displaysize=13.5\""
+        },
+        {
+          "name": "attr_displaysize=15\""
+        }
+      ]
+    }
+  ]
+}
+
+
+
 ]
+
+
+
+ "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Tablets\",\n      \"id\": \"897\",\n      \"subCategories\": [\n        {\n          \"name\": \"Acer\",\n          \"id\": \"897_Acer\"\n        },\n        {\n          \"name\": \"Asus\",\n          \"id\": \"897_Asus\"\n        },\n        {\n          \"name\": \"Fujitsu\",\n          \"id\": \"897_Fujitsu\"\n        },\n        {\n          \"name\": \"HP\",\n          \"id\": \"897_HP\"\n        },\n        {\n          \"name\": \"Hanvon\",\n          \"id\": \"897_Hanvon\"\n        },\n        {\n          \"name\": \"Lenovo\",\n          \"id\": \"897_Lenovo\"\n        },\n        {\n          \"name\": \"MSI\",\n          \"id\": \"897_MSI\"\n        },\n        {\n          \"name\": \"Microsoft\",\n          \"id\": \"897_Microsoft\"\n        },\n        {\n          \"name\": \"Samsung\",\n          \"id\": \"897_Samsung\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        },\n        {\n          \"name\": \"PCs\",\n          \"id\": \"153\"\n        },\n        {\n          \"name\": \"Backpacks, Notebook Bags & Cases\",\n          \"id\": \"3003\"\n        },\n        {\n          \"name\": \"Docking Stations\",\n          \"id\": \"152\"\n        },\n        {\n          \"name\": \"Ergonomic Wrist Rests\",\n          \"id\": \"9851\"\n        },\n        {\n          \"name\": \"Notebook Accessories\",\n          \"id\": \"1284\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Monitors\",\n      \"id\": \"3001\",\n      \"subCategories\": [\n        {\n          \"name\": \"Flat Panel Displays\",\n          \"id\": \"222\"\n        },\n        {\n          \"name\": \"Flat Panel Mounts\",\n          \"id\": \"3002\"\n        },\n        {\n          \"name\": \"Monitor Glare & Privacy Filters\",\n          \"id\": \"943\"\n        },\n        {\n          \"name\": \"Plasma Panels\",\n          \"id\": \"903\"\n        },\n        {\n          \"name\": \"Touch Screen Monitors\",\n          \"id\": \"223\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Input Devices\",\n      \"id\": \"191\",\n      \"subCategories\": [\n        {\n          \"name\": \"Keyboards\",\n          \"id\": \"194\"\n        },\n        {\n          \"name\": \"Mice\",\n          \"id\": \"195\"\n        },\n        {\n          \"name\": \"Headsets\",\n          \"id\": \"1637\"\n        },\n        {\n          \"name\": \"Digital Pens\",\n          \"id\": \"3652\"\n        },\n        {\n          \"name\": \"Presentation Devices\",\n          \"id\": \"8547\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Data Storage\",\n      \"id\": \"206\",\n      \"subCategories\": [\n        {\n          \"name\": \"Blu-ray (re)writers\",\n          \"id\": \"1622\"\n        },\n        {\n          \"name\": \"CD/DVD (Re)Writers\",\n          \"id\": \"214\"\n        },\n        {\n          \"name\": \"Card Readers\",\n          \"id\": \"858\"\n        },\n        {\n          \"name\": \"External Hard Drives\",\n          \"id\": \"1823\"\n        },\n        {\n          \"name\": \"Flash Memory\",\n          \"id\": \"902\"\n        },\n        {\n          \"name\": \"Hard Disk Drives\",\n          \"id\": \"219\"\n        },\n        {\n          \"name\": \"Solid State Drives\",\n          \"id\": \"1563\"\n        },\n        {\n          \"name\": \"Storage Media Cases\",\n          \"id\": \"298\"\n        },\n        {\n          \"name\": \"USB Flash Drives\",\n          \"id\": \"1554\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Hardware Components\",\n      \"id\": \"106\",\n      \"subCategories\": [\n        {\n          \"name\": \"Audio Cards\",\n          \"id\": \"173\"\n        },\n        {\n          \"name\": \"Cables\",\n          \"id\": \"830\",\n          \"subCategories\": [\n            {\n              \"name\": \"Audio/Video Cables\",\n              \"id\": \"1307\"\n            },\n            {\n              \"name\": \"Cable Interface/Gender Adapters\",\n              \"id\": \"1501\"\n            },\n            {\n              \"name\": \"Firewire Cables\",\n              \"id\": \"1306\"\n            },\n            {\n              \"name\": \"SATA Cables\",\n              \"id\": \"1303\"\n            },\n            {\n              \"name\": \"Usb Cables\",\n              \"id\": \"1158\"\n            }\n          ]\n        },\n        {\n          \"name\": \"Chassis Components\",\n          \"id\": \"236\",\n          \"subCategories\": [\n            {\n              \"name\": \"Fans, coolers & radiators\",\n              \"id\": \"921\"\n            },\n            {\n              \"name\": \"Mounting Kits\",\n              \"id\": \"1007\"\n            },\n            {\n              \"name\": \"Rack Consoles\",\n              \"id\": \"1500\"\n            },\n            {\n              \"name\": \"Storage Enclosures\",\n              \"id\": \"862\"\n            }\n          ]\n        },\n        {\n          \"name\": \"Memory Modules\",\n          \"id\": \"911\"\n        },\n        {\n          \"name\": \"Motherboards\",\n          \"id\": \"164\"\n        },\n        {\n          \"name\": \"Power Supplies\",\n          \"id\": \"816\",\n          \"subCategories\": [\n            {\n              \"name\": \"Battery Chargers\",\n              \"id\": \"829\"\n            },\n            {\n              \"name\": \"Power Adapters & Inverters\",\n              \"id\": \"827\"\n            },\n            {\n              \"name\": \"Power Supply Units\",\n              \"id\": \"963\"\n            },\n            {\n              \"name\": \"Rechargeable Batteries\",\n              \"id\": \"814\"\n            },\n            {\n              \"name\": \"Surge Protectors\",\n              \"id\": \"1388\"\n            }\n          ]\n        },\n        {\n          \"name\": \"Processors\",\n          \"id\": \"989\"\n        },\n        {\n          \"name\": \"Video Cards\",\n          \"id\": \"170\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Printers\",\n      \"id\": \"225\",\n      \"subCategories\": [\n        {\n          \"name\": \"Inkjet Printers\",\n          \"id\": \"234\"\n        },\n        {\n          \"name\": \"Laser/LED Printers\",\n          \"id\": \"235\"\n        },\n        {\n          \"name\": \"Multifunctionals\",\n          \"id\": \"304\"\n        },\n        {\n          \"name\": \"Photo Printers\",\n          \"id\": \"922\"\n        },\n        {\n          \"name\": \"Printing Supplies\",\n          \"id\": \"373\",\n          \"subCategories\": [\n            {\n              \"name\": \"Ink Cartridges\",\n              \"id\": \"377\"\n            },\n            {\n              \"name\": \"Printer Paper\",\n              \"id\": \"692\"\n            },\n            {\n              \"name\": \"Toners & Laser Cartridges\",\n              \"id\": \"375\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"

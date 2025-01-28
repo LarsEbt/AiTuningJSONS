@@ -1,0 +1,1134 @@
+[ 
+    {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Ich suche nach einen Laptop von HP"
+          },
+          {
+            "role": "assistant",
+            "content": "Hier sind Notebooks von HP."
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "get_product_categories",
+              "arguments": "{\"mainCategory\": \"Laptop\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_product_categories",
+            "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "get_productcategory_filters",
+              "arguments": "{\"mainCategoryId\": \"1835\", \"subCategoryId\": \"151\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_productcategory_filters",
+            "content": "{\"filter\": \"ManufacturerName=HP\"}"
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "product_search",
+              "arguments": "{\"Query\": \"Notebook\", \"mainCategoryId\": \"1835\", \"subCategoryId\": \"151\", \"filters\": {\"filter\": \"ManufacturerName=HP\"}}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "product_search",
+            "content": "[{\"name\": \"HP ProBook 11 EE G1\", \"price\": \"$668.54\", \"Display\": \"11.6\", \"brand\": \"HP\", \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/0889296696803\"}, {\"name\": \"HP ProBook 6550b Notebook PC\", \"price\": \"$1000\", \"Display\": \"15.6\", \"brand\": \"HP\", \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/5079807\"}]"
+          },
+          {
+            "role": "assistant",
+            "content": "Hier sind zwei Notebooks von HP, die Sie interessieren könnten:\n\n1. **HP ProBook 11 EE G1**\n   - Preis: $668.54\n   - Display: 11.6\"\n   - Marke: HP\n   - [Produktlink](https://pwa-salesemea-03-int.pwa.intershop.de/product/0889296696803)\n\n2. **HP ProBook 6550b Notebook PC**\n   - Preis: $1000\n   - Display: 15.6\"\n   - Marke: HP\n   - [Produktlink](https://pwa-salesemea-03-int.pwa.intershop.de/product/5079807)"
+          }
+        ],
+        "functions": [
+          {
+            "name": "get_product_categories",
+            "description": "Returns all subcategories with their Id from a main category.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": { "type": "string" }
+              },
+              "required": ["mainCategory"]
+            }
+          },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Fetches applicable filters for a product category.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": { "type": "string" },
+                "subCategoryId": { "type": "string" }
+              },
+              "required": ["mainCategoryId", "subCategoryId"]
+            }
+          },
+          {
+            "name": "product_search",
+            "description": "Searches for products in a given category.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "Query": { "type": "string" },
+                "mainCategoryId": { "type": "string" },
+                "subCategoryId": { "type": "string" },
+                "filters": { "type": "object" }
+              },
+              "required": ["Query", "mainCategoryId", "subCategoryId"]
+            }
+          }
+        ]
+      },
+      
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Verkauft ihr Computer?"
+          },
+          {
+            "role": "assistant",
+            "content": "Ja, wir verkaufen Computer. Was genau suchen Sie?"
+          },
+          {
+            "role": "user",
+            "content": "Ich brauche Pc fürs Gaming"
+          },
+          {
+            "role": "assistant",
+            "content": "Wir haben aktuell zwei Gaming-PCs im Sortiment. Möchten Sie mehr darüber erfahren?"
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "product_search",
+              "arguments": "{\"Query\": \"Gaming PC\", \"format\": \"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "product_search",
+            "content": "[{\"name\": \"Acer Predator G3\", \"price\": \"$1200\", \"specs\": \"Intel i7, 16GB RAM, RTX 3060\", \"link\": \"https://example.com/acer-predator-g3\"}, {\"name\": \"HP Omen 25L\", \"price\": \"$1500\", \"specs\": \"AMD Ryzen 7, 32GB RAM, RX 6700XT\", \"link\": \"https://example.com/hp-omen-25l\"}]"
+          },
+
+          {
+            "role": "assistant",
+            "content": "Hier sind zwei Gaming-PCs, die wir aktuell im Angebot haben:\n\n1. **Acer Predator G3**\n  - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/pcs/acer-predator-g3-605-prd4713147997367-ctgComputers.1835.153)\n\n2. **Acer Predator G3 G3610**\n  - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/pcs/acer-predator-g3-g3610-prd10809311-ctgComputers.1835.153)\n\nMöchten Sie weitere Informationen zu einem der PCs?"
+          }
+        ],
+        "functions": [
+          {
+            "name": "product_search",
+            "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "Query": {
+                  "type": "string",
+                  "description": "Search query for the desired product."
+                },
+                "format": {
+                  "type": "string",
+                  "description": "Desired format of the response."
+                }
+              },
+              "required": [
+                "Query"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "messages": [
+            {
+              "role": "user",
+              "content": "Kannst du mir eine Festplatte empfehlen?"
+            },
+            {
+              "role": "assistant",
+              "content": "Da es viele verschiedene Festplattenarten gibt, habe ich einige Fragen: SSD oder HDD, intern oder extern?"
+            },
+            {
+              "role": "user",
+              "content": "Eine interne SSD"
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "get_product_categories",
+                "arguments": "{\"mainCategory\":\"Data Storage\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "get_product_categories",
+              "content": "[{\n  \"name\": \"Data Storage\",\n  \"id\": \"206\",\n  \"subCategories\": [\n    {\n      \"name\": \"Solid State Drives\",\n      \"id\": \"1563\"\n    },\n    {\n      \"name\": \"Hard Disk Drives\",\n      \"id\": \"219\"\n    }\n  ]\n}]"
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "product_search",
+                "arguments": "{\"Query\": \"Solid State Drive\",\"mainCategoryID\":\"206\", \"subCategoryID\":\"1563\", \"format\": \"string\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "product_search",
+              "content": "[{\"name\": \"A-DATA S511 240GB\", \"price\": \"$440.75\", \"capacity\": \"240GB\",\"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/solid-state-drives/a-data-s511-240gb-prd9013198-ctgComputers.206.1563\"}, {\"name\": \"Kingston 240GB HyperX SSD\", \"price\": \"527.00\", \"capacity\": \"527.00\",\"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/solid-state-drives/kingston-240gb-hyperx-ssd-prd9602367-ctgComputers.206.1563\"}]"
+            },
+            {
+              "role": "assistant",
+              "content": "Hier sind zwei interne SSDs, die ich empfehlen kann:\n\n1. **A-DATA S511 240GB**\n   - Preis: $440.75\n   - Kapazität: 240GB\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/solid-state-drives/a-data-s511-240gb-prd9013198-ctgComputers.206.1563)\n\n2. **Kingston 240GB HyperX SSD**\n   - Preis: $527.00\n   - Kapazität: 527.00\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/solid-state-drives/kingston-240gb-hyperx-ssd-prd9602367-ctgComputers.206.1563)\n\nWelche interessiert Sie mehr, oder soll ich weitere Optionen suchen?"
+            }
+        ],
+        "functions": [
+          {
+            "name": "product_search",
+            "description": "Product search engine of the intronics store. Can only search for a product, not for a bundle or setup.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "Query": {
+                  "type": "string",
+                  "description": "search query"
+                }
+              },
+              "required": [
+                "Query"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+        "description": "Returns all subcategories with their ID from a main category.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategory": {
+              "type": "string",
+              "description": "Main category for product search",
+              "enum": [
+                "3D_print",
+                "Computers",
+                "presentation-conferencing",
+                "Home-Entertainment",
+                "networks",
+                "servers",
+                "specials"
+              ]
+            }
+          },
+          "required": [
+            "mainCategory"
+          ]
+        }
+          }
+        ]
+      },
+      {
+       "messages": [
+    {
+      "role": "user",
+      "content": "Ich suche einen Laptop von Asus"
+    },
+    {
+      "role": "assistant",
+      "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+    },
+    {
+      "role": "assistant",
+      "function_call": {
+        "name": "get_product_categories",
+        "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+      }
+    },
+    {
+      "role": "function",
+      "name": "get_product_categories",
+      "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "role": "assistant",
+      "function_call": {
+        "name": "get_productcategory_filters",
+        "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", format:\"string\"}"
+      }
+    },
+    {
+      "role": "function",
+      "name": "get_productcategory_filters",
+      "content": "{\"filter\": \"ManufacturerName=Asus\"}"    
+    },
+    {
+      "role": "assistant",
+      "function_call": {
+        "name": "product_search",
+        "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\",\"filter\":\"ManufacturerName=Asus\", format:\"string\"}"
+      }
+    },
+    {
+      "role": "function",
+      "name": "product_search",
+      "content": "{\n  \"products\": [\n    {\n      \"name\": \"Asus P42F-VO068X\",\n      \"price\": \"824.99\",\n ,\"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/7967570\"\n    },\n    {\n      \"name\": \"Asus Eee PC 1008P \",\n      \"price\": \"373.95\",\n  \"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/6997041\"\n    }\n  ]\n}"
+    },
+    {
+      "role": "assistant",
+      "content": "Hier sind zwei Produkte, die ich empfehlen kann:\n\n1. **Asus P42F-VO068X**\n   - Preis: $824.99\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/7967570)\n\n2. **Asus Eee PC 1008P**\n   - Preis: $373.95\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/6997041)\n\nWelche interessiert Sie mehr, oder soll ich weitere Optionen suchen?"
+    }
+        ],
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": {
+                  "type": "string"
+                },
+                "subCategoryId": {
+                  "type": "string"
+                },
+                "subsubCategoryId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategoryId",
+                "subCategoryId"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+            "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategory"
+              ]
+            }
+          }
+        ]
+      },
+
+      {
+        "messages": [
+            {
+              "role": "user",
+              "content": "Ich benötige einen Laptop von Lenovo"
+            },
+            {
+              "role": "assistant",
+              "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "get_product_categories",
+                "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "get_product_categories",
+              "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Tablets\",\n      \"id\": \"897\",\n      \"subCategories\": [\n        {\n          \"name\": \"Acer\",\n          \"id\": \"897_Acer\"\n        },\n        {\n          \"name\": \"Asus\",\n          \"id\": \"897_Asus\"\n        },\n        {\n          \"name\": \"Fujitsu\",\n          \"id\": \"897_Fujitsu\"\n        },\n        {\n          \"name\": \"HP\",\n          \"id\": \"897_HP\"\n        },\n        {\n          \"name\": \"Hanvon\",\n          \"id\": \"897_Hanvon\"\n        },\n        {\n          \"name\": \"Lenovo\",\n          \"id\": \"897_Lenovo\"\n        },\n        {\n          \"name\": \"MSI\",\n          \"id\": \"897_MSI\"\n        },\n        {\n          \"name\": \"Microsoft\",\n          \"id\": \"897_Microsoft\"\n        },\n        {\n          \"name\": \"Samsung\",\n          \"id\": \"897_Samsung\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        },\n        {\n          \"name\": \"PCs\",\n          \"id\": \"153\"\n        },\n        {\n          \"name\": \"Backpacks, Notebook Bags & Cases\",\n          \"id\": \"3003\"\n        },\n        {\n          \"name\": \"Docking Stations\",\n          \"id\": \"152\"\n        },\n        {\n          \"name\": \"Ergonomic Wrist Rests\",\n          \"id\": \"9851\"\n        },\n        {\n          \"name\": \"Notebook Accessories\",\n          \"id\": \"1284\"\n        }\n      ]\n    }\n  ]\n}"
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "get_productcategory_filters",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"format\":\"string\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "get_productcategory_filters",
+              "content": "{\"filter\": \"ManufacturerName=Lenovo\"}"            
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "product_search",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"filter\":\"ManufacturerName=Lenovo\", \"format\":\"string\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "product_search",
+              "content": "{\n  \"products\": [\n    {\n      \"name\": \"Lenovo ThinkPad X1 Carbon\",\n      \"id\": \"12345\",\n      \"price\": \"899.99\",\n      \"color\": \"Black\",\n      \"storage\": \"256GB SSD\",\n      \"display\": \"14\"\"\n    },\n    {\n      \"name\": \"Lenovo IdeaPad 3\",\n      \"id\": \"12346\",\n      \"price\": \"499.99\",\n      \"color\": \"Silver\",\n      \"storage\": \"512GB SSD\",\n      \"display\": \"15.6\"\"\n    }\n  ]\n}"
+            },
+            {
+                "role": "assistant",
+                "content":"Hier sind laptops von Lenovo, die Sie interessieren könnten."
+            }
+          ],
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": {
+                  "type": "string"
+                },
+                "subCategoryId": {
+                  "type": "string"
+                },
+                "subsubCategoryId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategoryId",
+                "subCategoryId"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+            "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategory"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "messages": [
+            {
+              "role": "user",
+              "content": "Ich gib mir ein Notebook von Lenovo"
+            },
+            {
+              "role": "assistant",
+              "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "get_product_categories",
+                "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "get_product_categories",
+              "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "get_productcategory_filters",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"format\":\"string\"}"
+              }
+            },
+            {
+              "role": "function",
+              "name": "get_productcategory_filters",
+              "content": "{\"filter\": \"ManufacturerName=Lenovo\"}"            
+            },
+            {
+              "role": "assistant",
+              "function_call": {
+                "name": "product_search",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"filter\":\"ManufacturerName=Lenovo\", \"format\":\"string\"}"
+              }
+            },
+            {
+              "role": "assistant",
+              "content": "Ich habe nach Lenovo Notebooks gesucht und einige Optionen gefunden. Wenn du mehr Details zu einem bestimmten Modell möchtest oder eine spezielle Anfrage hast, lass es mich wissen!"
+            }
+          ]
+        ,
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": {
+                  "type": "string"
+                },
+                "subCategoryId": {
+                  "type": "string"
+                },
+                "subsubCategoryId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategoryId",
+                "subCategoryId"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+            "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategory"
+              ]
+            }
+          }
+        ]
+      },
+
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Ich benötige ein Notebook von Asus"
+          },
+          {
+            "role": "assistant",
+            "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "get_product_categories",
+                "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_product_categories",
+            "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+
+          },
+          {
+            "role":"assistant",
+            "function_call": {
+                "name": "get_productcategory_filters",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", format:\"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_productcategory_filters",
+            "content": "{\"filter\": \"ManufacturerName=Asus\"}"            
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "product_search",
+              "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\",\"filter\":\"ManufacturerName=Asus\", format:\"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "product_search",
+            "content": "{\n  \"products\": [\n    {\n      \"name\": \"Asus P42F-VO068X\",\n      \"price\": \"824.99\",\n ,\"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/7967570\"\n    },\n    {\n      \"name\": \"Asus Eee PC 1008P \",\n      \"price\": \"373.95\",\n  \"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/6997041\"\n    }\n  ]\n}"
+          },
+          
+          {
+            "role": "assistant",
+            "content": "Hier sind zwei Produkte, die ich empfehlen kann:\n\n1. **Asus P42F-VO068X**\n   - Preis: $824.99\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/7967570)\n\n2. **Asus Eee PC 1008P**\n   - Preis: $373.95\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/6997041)\n\nWelche interessiert Sie mehr, oder soll ich weitere Optionen suchen?"
+          }
+        ],
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": {
+                  "type": "string"
+                },
+                "subCategoryId": {
+                  "type": "string"
+                },
+                "subsubCategoryId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategoryId",
+                "subCategoryId"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+            "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategory"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Ich benötige ein Laptop von Microsoft"
+          },
+          {
+            "role": "assistant",
+            "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "get_product_categories",
+                "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_product_categories",
+            "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+
+          },
+          {
+            "role":"assistant",
+            "function_call": {
+                "name": "get_productcategory_filters",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", format:\"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_productcategory_filters",
+            "content": "{\"filter\": \"ManufacturerName=Microsoft\"}"            
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "product_search",
+              "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\",\"filter\":\"ManufacturerName=Microsoft\", format:\"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "product_search",
+            "content": "{\n  \"products\": [\n    {\n      \"name\": \"Microsoft Surface Book 2\",\n      \"price\": \"2,499.00\",\n ,\"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/201807201\"\n    },\n    {\n      \"name\": \"Microsoft Surface Pro\",\n      \"price\": \"1,299.00\",\n  \"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/microsoft/microsoft-surface-pro-prd201807195-ctgComputers.897.897_Microsoft\"\n    }\n  ]\n}"
+          },
+          {
+            "role":"assistant",
+            "content": "Hier sind zwei Produkte, die ich empfehlen kann:\n\n1. **Microsoft Surface Book 2**\n   - Preis: $2,499.00\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/201807201)\n\n2. **Microsoft Surface Pro**\n   - Preis: $1,299.00\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/microsoft/microsoft-surface-pro-prd201807195-ctgComputers.897.897_Microsoft)\n\nWelche interessiert Sie mehr, oder soll ich weitere Optionen suchen?"
+          }
+          
+        ],
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": {
+                  "type": "string"
+                },
+                "subCategoryId": {
+                  "type": "string"
+                },
+                "subsubCategoryId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategoryId",
+                "subCategoryId"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+            "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategory"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Ich benötige ein Notebook von Microsoft"
+          },
+          {
+            "role": "assistant",
+            "content": "Das habe ich gefunden, für weitere Fragen gerne mit mir schreiben."
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "get_product_categories",
+                "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_product_categories",
+            "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+
+          },
+          {
+            "role":"assistant",
+            "function_call": {
+                "name": "get_productcategory_filters",
+                "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", format:\"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "get_productcategory_filters",
+            "content": "{\"filter\": \"ManufacturerName=Microsoft\"}"            
+          },
+          {
+            "role": "assistant",
+            "function_call": {
+              "name": "product_search",
+              "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\",\"filter\":\"ManufacturerName=Microsoft\", format:\"string\"}"
+            }
+          },
+          {
+            "role": "function",
+            "name": "product_search",
+            "content": "{\n  \"products\": [\n    {\n      \"name\": \"Microsoft Surface Book 2\",\n      \"price\": \"2,499.00\",\n ,\"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/201807201\"\n    },\n    {\n      \"name\": \"Microsoft Surface Pro\",\n      \"price\": \"1,299.00\",\n  \"url\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/microsoft/microsoft-surface-pro-prd201807195-ctgComputers.897.897_Microsoft\"\n    }\n  ]\n}"
+          },
+          {
+            "role":"assistant",
+            "content": "Hier sind zwei Produkte, die ich empfehlen kann:\n\n1. **Microsoft Surface Book 2**\n   - Preis: $2,499.00\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/201807201)\n\n2. **Microsoft Surface Pro**\n   - Preis: $1,299.00\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/microsoft/microsoft-surface-pro-prd201807195-ctgComputers.897.897_Microsoft)\n\nWelche interessiert Sie mehr, oder soll ich weitere Optionen suchen?"
+          }
+        ],
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+          {
+            "name": "get_productcategory_filters",
+            "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategoryId": {
+                  "type": "string"
+                },
+                "subCategoryId": {
+                  "type": "string"
+                },
+                "subsubCategoryId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategoryId",
+                "subCategoryId"
+              ]
+            }
+          },
+          {
+            "name": "get_product_categories",
+            "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "mainCategory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mainCategory"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Helfen sie mir ein Tablet zu finden von Asus"
+          },
+          {
+            "role": "assistant",
+            "content": "Das habe ich gefunden, für weitere Fragen stehe ich zu ihrer Verfügung"
+          },
+          {
+            "role":"assistant",
+            "function_call":{
+              "name":"get_product_categories",
+              "arguments":"{\"mainCategory\":\"Computers\"}"
+            }
+          },
+          {
+            "role":"function",
+            "name":"get_product_categories",
+            "content":"{\"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Tablets\",\n      \"id\": \"897\",\n      \"subCategories\": [\n        {\n          \"name\": \"Acer\",\n          \"id\": \"897_Acer\"\n        },\n        {\n          \"name\": \"Asus\",\n          \"id\": \"897_Asus\"\n        },\n        {\n          \"name\": \"Fujitsu\",\n          \"id\": \"897_Fujitsu\"\n        },\n        {\n          \"name\": \"HP\",\n          \"id\": \"897_HP\"\n        },\n        {\n          \"name\": \"Hanvon\",\n          \"id\": \"897_Hanvon\"\n        },\n        {\n          \"name\": \"Lenovo\",\n          \"id\": \"897_Lenovo\"\n        },\n        {\n          \"name\": \"MSI\",\n          \"id\": \"897_MSI\"\n        },\n        {\n          \"name\": \"Microsoft\",\n          \"id\": \"897_Microsoft\"\n        },\n        {\n          \"name\": \"Samsung\",\n          \"id\": \"897_Samsung\"\n        }\n      ]\n    }"
+          },
+          {
+            "role":"assistant",
+            "function_call":{
+              "name":"product_search",
+              "arguments":"{\"mainCategoryId\":\"Computers\",\"subCategoryId\":\"897\",\"subsubCategoryId\":\"897_Asus\"}"
+            }
+          },
+          {
+            "role":"function",
+            "name":"product_search",
+            "content": "{\n  \"products\": [\n    {\n      \"name\": \"Asus R50 series EP121-1A013M\",\n      \"price\": \"1,337.95\",\n      \"Prozessor\": \"Intel Core i5-470UM (3M Cache, 1.33 GHz)\",\n \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/10680607\"\n    },\n    {\n      \"name\": \"Asus R50 series EP121-1A013M\",\n      \"price\": \"$1,337.95\",\n      \"Prozessor\": \"Intel Core i5-470UM (3M Cache, 1.33 GHz)\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/10680607\"\n    }\n  ]\n}"
+          },
+          {
+            "role":"assistant",
+            "content": "Hier sind zwei Beispiele für Asus Tablets, die ich empfehlen kann:\n\n1. **Asus R50 series EP121-1A013M**\n   - Preis: $1,337.95\n   - Prozessor: Intel Core i5-470UM (3M Cache, 1.33 GHz)\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/10680607)\n\n2. **Asus R50 series EP121-1A013M**\n   - Preis: $1,337.95\n   - Prozessor: Intel Core i5-470UM (3M Cache, 1.33 GHz)\n   - [Hier ansehen](https://pwa-salesemea-03-int.pwa.intershop.de/product/10680607)\n\nWelche interessiert Sie mehr, oder soll ich weitere Optionen suchen?"
+          }
+        ],
+        "functions": [
+            {
+                "name": "product_search",
+                "description": "searches for products and their information. if you provide a filter, use the name. for example: 'ManufacturerName=Microsoft' A filter is not required! You can also just use the categories or the query or all together.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "Query": {
+                      "type": "string"
+                    },
+                    "mainCategoryId": {
+                      "type": "string"
+                    },
+                    "subCategoryId": {
+                      "type": "string"
+                    },
+                    "filters": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "Query",
+                    "mainCategoryId"
+                  ]
+                }
+            },
+            {
+              "name": "get_product_categories",
+              "description": "returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "mainCategory": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "mainCategory"
+                ]
+              }
+            }
+          ]
+      },
+      {
+        "messages":[
+          {
+            "role":"user",
+            "content":"Ich habe Probleme mit meinem Laptop"
+          },
+          {
+            "role":"assistant",
+            "content": "Für detaillierte Problemlösungen bei Produkten empfehle ich Ihnen, den Kundenservice der jeweiligen Marke zu kontaktieren."
+          }
+        ]
+      },
+      {
+        "messages":[
+          {
+            "role":"user",
+            "content":"Ich habe einige Fragen"
+          },
+          {
+            "role":"assistant",
+            "content": "Gerne beantworte ich Ihre Fragen, ich kann Sie aber auch zur FAQ seite weiterleiten."
+          }
+        ]
+      },
+      {
+        "messages":[
+          {
+            "role":"user",
+            "content":"Ich suche nach Rechner, Zeige mir was ihr habt"
+          },
+          {
+            "role":"assistant",
+            "function_call":{
+              "name":"open_general_computers",
+              "arguments":"{}"
+            }
+          },
+          {
+            "role":"assistant",
+            "content":"Ich leite sie Weiter zu den Computern"
+          }
+        ],
+        "functions":[
+          {
+            "name":"open_general_computers",
+            "description":"This tool redirects users to the Computers or Desktops or PCs section of the website.",
+            "parameters":{
+              "type":"object",
+              "properties":{}
+            }
+          }
+        ]
+      },
+      {
+        "messages":[
+          {
+            "role":"user",
+            "content":"Ich suche nach Desktops, Zeige mir was ihr habt"
+          },
+          {
+            "role":"assistant",
+            "function_call":{
+              "name":"open_general_computers",
+              "arguments":"{}"
+            }
+          },
+          {
+            "role":"assistant",
+            "content":"Ich leite sie Weiter zu den Computern"
+          }
+        ],
+        "functions":[
+          {
+            "name":"open_general_computers",
+            "description":"This tool redirects users to the Computers or Desktops or PCs section of the website.",
+            "parameters":{
+              "type":"object",
+              "properties":{}
+            }
+          }
+        ]
+      },
+      {
+        "messages":[
+          {
+            "role":"user",
+            "content":"Ich suche nach Computer, Zeige mir was ihr habt"
+          },
+          {
+            "role":"assistant",
+            "function_call":{
+              "name":"open_general_computers",
+              "arguments":"{}"
+            }
+          },
+          {
+            "role":"assistant",
+            "content":"Ich leite sie Weiter zu den Computern"
+          }
+        ],
+        "functions":[
+          {
+            "name":"open_general_computers",
+            "description":"This tool redirects users to the Computers or Desktops or PCs section of the website.",
+            "parameters":{
+              "type":"object",
+              "properties":{}
+            }
+          }
+        ]
+      }
+
+    
+]

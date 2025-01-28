@@ -1,0 +1,1111 @@
+ {
+   //erstes neues Beispiel
+   "messages": [
+     {
+       "role": "user",
+       "content": "Ich brauche einen neuen Laptop."
+     },
+     {
+       "role": "assistant",
+       "content": "Was ist dir bei einem Laptop am wichtigsten: Leistung, Akkulaufzeit oder vielleicht das Design?"
+     },
+     {
+       "role": "user",
+       "content": "Die Akkulaufzeit ist mir am wichtigsten."
+     },
+     {
+       "role": "assistant",
+       "content": "Welche Bildschirmgröße bevorzugst du?"
+     },
+     {
+       "role": "user",
+       "content": "Etwa 15 Zoll."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde nun nach Laptops suchen, die besonders lange Akkulaufzeiten bieten und eine Bildschirmgröße von etwa 15 Zoll haben."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_productcategory_filters",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategorieId\": \"1835\", \"subSubCategorieId\": \"151\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_productcategory_filters",
+       "content": "{\"filter\": \"BatteryLife=long\"}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"1835\", \"subsubCategoryId\": \"151\", \"filter\": \"BatteryLife=long\", \"query\": \"15 Zoll Laptop\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"HP EliteBook 850 G7\",\n      \"price\": \"$1200\",\n      \"Display\": \"15.6 Zoll\",\n      \"brand\": \"HP\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/123456\"\n    },\n    {\n      \"name\": \"Lenovo ThinkPad T15\",\n      \"price\": \"$1400\",\n      \"Display\": \"15.6 Zoll\",\n      \"brand\": \"Lenovo\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/789012\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind einige Laptops mit langer Akkulaufzeit und einer Bildschirmgröße von etwa 15 Zoll:\n\n1. [HP EliteBook 850 G7](https://pwa-salesemea-03-int.pwa.intershop.de/product/123456) - $1200\n2. [Lenovo ThinkPad T15](https://pwa-salesemea-03-int.pwa.intershop.de/product/789012) - $1400"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string"
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+       "name": "get_productcategory_filters",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string"
+           },
+           "subCategorieId": {
+             "type": "string"
+           },
+           "subSubCategorieId": {
+             "type": "string"
+           }
+         },
+         "required": [ "mainCategoryId", "subCategorieId" ]
+       }
+     }
+
+   ]
+ },
+ {
+   //beispiel zwei
+   "messages": [
+     {
+       "role": "user",
+       "content": "Kannst du mir die Preise für alle Laptops nennen?"
+     },
+     {
+       "role": "assistant",
+       "content": "Natürlich! In welchem Preisbereich suchst du Laptops? Zum Beispiel: unter $1000, zwischen $1000 und $1500, oder über $1500?"
+     },
+     {
+       "role": "user",
+       "content": "Ich suche nach Laptops zwischen $1000 und $1500."
+     },
+     {
+       "role": "assistant",
+       "content": "Alles klar! Ich werde jetzt nach Laptops in deinem gewünschten Preisbereich suchen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"1835\", \"subsubCategoryId\": \"151\", \"filter\": \"PriceRange=1000-1500\", \"query\": \"Laptop\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"HP EliteBook 850 G7\",\n      \"price\": \"$1200\",\n      \"Display\": \"15.6 Zoll\",\n      \"brand\": \"HP\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/123456\"\n    },\n    {\n      \"name\": \"Lenovo ThinkPad T15\",\n      \"price\": \"$1400\",\n      \"Display\": \"15.6 Zoll\",\n      \"brand\": \"Lenovo\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/789012\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind die verfügbaren Laptops in deinem Preisbereich von $1000 bis $1500:\n\n1. [HP EliteBook 850 G7](https://pwa-salesemea-03-int.pwa.intershop.de/product/123456) - $1200\n2. [Lenovo ThinkPad T15](https://pwa-salesemea-03-int.pwa.intershop.de/product/789012) - $1400\n\nFalls du weitere Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string"
+           },
+           "subCategoryId": {
+             "type": "string"
+           },
+           "subsubCategoryId": {
+             "type": "string"
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'PriceRange=1000-1500'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Laptop'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //Beispiel 3  nicht fertig
+   "messages": [
+     {
+       "role": "user",
+       "content": "Ich möchte einen Gaming-Desktop kaufen."
+     },
+     {
+       "role": "assistant",
+       "content": "Welche Art von Spielen spielst du am häufigsten? Das hilft, die passende Leistung zu bestimmen."
+     },
+     {
+       "role": "user",
+       "content": "Ich spiele vor allem Shooter und Open-World-Spiele."
+     },
+     {
+       "role": "assistant",
+       "content": "Für diese Art von Spielen empfehle ich einen Desktop mit leistungsstarker Grafikkarte und schneller CPU. Soll der Desktop auch Platz für Upgrades bieten?"
+     },
+     {
+       "role": "user",
+       "content": "Ja, er sollte erweiterbar sein."
+     },
+     {
+       "role": "assistant",
+       "content": "Alles klar, ich suche jetzt nach Gaming-Desktops, die leistungsstark sind und Platz für Upgrades bieten. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"PCs\",\n          \"id\": \"153\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"1835\", \"subsubCategoryId\": \"153\", \"filter\": \"Gaming=true&Upgradable=true\", \"query\": \"Gaming Desktop\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Acer Predator G3-605\",\n      \"price\": \"$1200\",\n      \"GPU\": \"NVIDIA GeForce GTX 970\",\n      \"CPU\": \"Intel Core i7-4790\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/123456\"\n    },\n    {\n      \"name\": \"Acer Predator G3 G3610\",\n      \"price\": \"$1400\",\n      \"GPU\": \"NVIDIA GeForce GTX 980\",\n      \"CPU\": \"Intel Core i7-2600\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/product/654321\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind einige Gaming-Desktops, die für Shooter und Open-World-Spiele geeignet sind und erweiterbar sind:\n\n1. [Acer Predator G3-605](https://pwa-salesemea-03-int.pwa.intershop.de/product/123456) - $1200\n   - GPU: NVIDIA GeForce GTX 970\n   - CPU: Intel Core i7-4790\n\n2. [Acer Predator G3 G3610](https://pwa-salesemea-03-int.pwa.intershop.de/product/654321) - $1400\n   - GPU: NVIDIA GeForce GTX 980\n   - CPU: Intel Core i7-2600\n\nFalls du weitere Optionen oder Details benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string",
+             "description": "ID of the main category."
+           },
+           "subCategoryId": {
+             "type": "string",
+             "description": "ID of the subcategory."
+           },
+           "subsubCategoryId": {
+             "type": "string",
+             "description": "ID of the subsubcategory."
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'Gaming=true&Upgradable=true'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Gaming Desktop'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ {//Beispiel 4
+   "messages": [
+     {
+       "role": "user",
+       "content": "Was sind die besten Laptops für Videobearbeitung?"
+     },
+     {
+       "role": "assistant",
+       "content": "Für die Videobearbeitung sind eine leistungsstarke CPU, viel RAM und eine gute GPU entscheidend. Bevorzugst du eine bestimmte Marke oder benötigst du weitere Kriterien wie Displaygröße?"
+     },
+     {
+       "role": "user",
+       "content": "Ich habe keine Markenpräferenz, aber das Display sollte mindestens 15 Zoll groß sein."
+     },
+     {
+       "role": "assistant",
+       "content": "Alles klar, ich suche nun nach Laptops mit mindestens 15-Zoll-Displays, die sich gut für Videobearbeitung eignen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"1835\", \"subsubCategoryId\": \"151\", \"filter\": \"VideoEditing=true&DisplaySize>=15\", \"query\": \"Laptop\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Microsoft Surface Book 2\",\n      \"price\": \"$2,499.00\",\n      ,\n      \"CPU\": \"Intel Core i7-8650U\",\n      \"RAM\": \"16 GB\",\n      \"Display\": \"15 Zoll\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/microsoft-surface-book-2-prd201807201-ctgComputers.1835.151\"\n    },\n    {\n      \"name\": \"HP ProBook 6550b Notebook PC\",\n      \"price\": \"$1,000.00\",\n      \"GPU\": \"Intel HD UMA graphics \",\n      \"CPU\": \"Intel Core i5\",\n      \"RAM\": \"8 GB\",\n      \"Display\": \"15.6 Zoll\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/hp-probook-6550b-notebook-pc-prd5079807-ctgComputers.1835.151\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Ich hab zwei Laptops für Videobearbeitung mit mindestens 15-Zoll-Displays gefunden:\n\n1. [Microsoft Surface Book 2](https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/microsoft-surface-book-2-prd201807201-ctgComputers.1835.151) - $2,499.00\n      - CPU: Intel Core i7-8650U\n   - RAM: 16 GB\n   - Display: 15 Zoll\n\n2. [HP ProBook 6550b Notebook PC](https://pwa-salesemea-03-int.pwa.intershop.de/product/222222) - $1000\n   - GPU: Intel HD UMA graphics\n   - CPU: Intel Core i5\n   - RAM: 8 GB\n   - Display: 15.6 Zoll\n\nFalls du noch weitere Informationen benötigst oder die Auswahl anpassen möchtest, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string"
+           },
+           "subCategoryId": {
+             "type": "string"
+           },
+           "subsubCategoryId": {
+             "type": "string"
+           },
+           "filter": {
+             "type": "string"
+           },
+           "query": {
+             "type": "string"
+            
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //Beispiel 5 muss noch 
+   "messages": [
+     {
+       "role": "user",
+       "content": "Hast du Notebooks für Studenten?"
+     },
+     {
+       "role": "assistant",
+       "content": "Ja, ich habe eine Auswahl von Notebooks, die gut für das Studium geeignet sind. Soll das Notebook leicht und tragbar sein?"
+     },
+     {
+       "role": "user",
+       "content": "Ja, es sollte auch eine gute Akkulaufzeit haben und bitte nicht ganz so schwer."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir nun Notebooks mit langer Akkulaufzeit und leichtem Design vorschlagen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"1835\", \"subsubCategoryId\": \"151\", \"filter\": \"Student=true&BatteryLife=long&Lightweight=true\", \"query\": \"Notebook\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"HP ProBook 11 EE G1\",\n      \"price\": \"$668.54\",\n      \"Weight\": \"1.5 kg\",\n      \"BatteryLife\": \"10 Stunden\",\n      \"Brand\": \"HP\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/hp-probook-11-ee-g1-prd0889296696803-ctgComputers.1835.151\"\n    },\n    {\n      \"name\": \"Microsoft Surface Laptop\",\n      \"price\": \"$1,299.00- $2,399.00\",\n      \"Weight\": \"1.25 kg\",\n      \"BatteryLife\": \"13 Stunden\",\n      \"Brand\": \"Microsoft\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/microsoft-surface-laptop-prd201807204-ctgComputers.1835.151\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind zwei Notebooks, die ideal für Studenten sind:\n\n1. [HP ProBook 11 EE G1](https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/hp-probook-11-ee-g1-prd0889296696803-ctgComputers.1835.151) - $668.54\n   - Gewicht: 1.5 kg\n   - Akkulaufzeit: 10 Stunden\n\n2. [Microsoft Surface Laptop](https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/microsoft-surface-laptop-prd201807204-ctgComputers.1835.151) - $$1,299.00- $2,399.00\n   - Gewicht: 1.25 kg\n   - Akkulaufzeit: mehr als 13 Stunden\n\nFalls du weitere Optionen oder zusätzliche Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string"
+           },
+           "subCategoryId": {
+             "type": "string"
+           },
+           "subsubCategoryId": {
+             "type": "string"
+           },
+           "filter": {
+             "type": "string"
+           },
+           "query": {
+             "type": "string"
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //Beispiel 6
+   "messages": [
+     {
+       "role": "user",
+       "content": "Ich suche nach einem Tablet für das Zeichnen."
+     },
+     {
+       "role": "assistant",
+       "content": "Hast du eine bevorzugte Bildschirmgröße oder ein bestimmtes Budget?"
+     },
+     {
+       "role": "user",
+       "content": "Ein 12-Zoll-Display wäre ideal und unter 1000$ wäre schön."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir nun Tablets mit einem 12-Zoll-Display und einem Budget unter 1000$."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Tablets\",\n      \"id\": \"897\",\n      \"subsubCategories\": [{\"name\": \"Acer\", \"id\": \"897_Acer\"},\n{\"name\": \"Asus\", \"id\": \"897_Asus\"},\n{\"name\": \"Fujitsu\", \"id\": \"897_Fujitsu\"},\n{\"name\": \"HP\", \"id\": \"897_HP\"},\n{\"name\": \"Hanvon\", \"id\": \"897_Hanvon\"},\n{\"name\": \"Lenovo\", \"id\": \"897_Lenovo\"},\n{\"name\": \"MSI\", \"id\": \"897_MSI\"},\n{\"name\": \"Microsoft\", \"id\": \"897_Microsoft\"},\n{\"name\": \"Samsung\", \"id\": \"897_Samsung\"}]"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"897\", \"filter\": \"Drawing=true&DisplaySize=12&Price<1000\", \"query\": \"Tablet\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Samsung Galaxy Tab 10.1\",\n      \"price\": \"$801.00\",\n      \"Display\": \"10.1 Zoll\",\n      \"Brand\": \"Samsung\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/samsung/samsung-galaxy-tab-10.1-prd9404860-ctgComputers.897.897_Samsung\"\n    },\n    {\n      \"name\": \"HP Compaq tc1100 Tablet PC TouchPad\",\n      \"price\": \"$508.00\",\n      \"Display\": \"9.7 Zoll\",\n      \"Brand\": \"HP\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/hp/hp-compaq-tc1100-tablet-pc-touchpad-prd9403799-ctgComputers.897.897_HP\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind zwei Tablets, die sich ideal für das Zeichnen eignen:\n\n1. [Samsung Galaxy Tab 10.1](https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/samsung/samsung-galaxy-tab-10.1-prd9404860-ctgComputers.897.897_Samsung) - $801\n   - Display: 10.1 Zoll\n   - Marke: Samsung\n\n2. [HP Compaq tc1100 Tablet PC TouchPad](https://pwa-salesemea-03-int.pwa.intershop.de/computers/tablets/hp/hp-compaq-tc1100-tablet-pc-touchpad-prd9403799-ctgComputers.897.897_HP) - $508\n   - Display: 9.7 Zoll\n   - Marke: HP\n\nFalls du weitere Optionen oder zusätzliche Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string",
+             "description": "ID of the main category."
+           },
+           "subCategoryId": {
+             "type": "string",
+             "description": "ID of the subcategory."
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'Drawing=true&DisplaySize=12&Price<1000'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Tablet'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ {//Beispiel 7
+   "messages": [
+     {
+       "role": "user",
+       "content": "Welches Betriebssystem ist besser für mich, Windows oder MacOS?"
+     },
+     {
+       "role": "assistant",
+       "content": "Das kommt darauf an, wofür du den Computer hauptsächlich nutzen möchtest. Möchtest du ihn für Office-Anwendungen oder für kreative Arbeit nutzen?"
+     },
+     {
+       "role": "user",
+       "content": "Ich arbeite viel mit kreativen Programmen wie Photoshop."
+     },
+     {
+       "role": "assistant",
+       "content": "In diesem Fall wäre ein MacOS-Computer besser geeignet, da er eine nahtlose Integration mit kreativen Softwarelösungen bietet.Wir bieten aber leider Keine MacOS Produkte,soll ich für sie nach einer Windows alternative suchen ?"
+     }
+   ]
+ },
+ {//Beispiel 8
+   "messages": [
+     {
+       "role": "user",
+       "content": "Was ist besser, ein Laptop oder ein PC?"
+     },
+     {
+       "role": "assistant",
+       "content": "Das kommt darauf an, ob du Mobilität benötigst oder einen leistungsstärkeren Computer für zu Hause suchst. Was ist dir wichtiger?"
+     },
+     {
+       "role": "user",
+       "content": "Ich benötige etwas für den Home-Office-Einsatz."
+     },
+     {
+       "role": "assistant",
+       "content": "Dann ist ein PC wahrscheinlich die bessere Wahl, da er mehr Leistung für das gleiche Geld bietet."
+     }
+   ]
+ },
+ { //beispiel 9
+   "messages": [
+     {
+       "role": "user",
+       "content": "Ich brauche einen guten Monitor für meinen PC."
+     },
+     {
+       "role": "assistant",
+       "content": "Welche Bildschirmgröße möchtest du und welche Funktionen sind dir wichtig?"
+     },
+     {
+       "role": "user",
+       "content": "Mir ist nur die Größe wichtig, da soll es mindestens 24 Zoll sein. Außerdem hätte ich gerne einen Samsung oder BenQ Monitor."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir einen Monitor mit einer Größe von mindestens 24 Zoll von Samsung oder BenQ empfehlen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Monitors\",\n      \"id\": \"3001\",\n      \"subCategories\": [\n        {\n          \"name\": \"Flat Panel Displays\",\n          \"id\": \"222\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"3001\", \"subsubCategoryId\": \"222\", \"filter\": \"Brand=Samsung,BenQ\", \"query\": \"Monitor\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Samsung S27A550H\",\n      \"price\": \"$371.25\",\n      \"Display\": \"27 Zoll\",\n      \"Brand\": \"Samsung\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/monitors/flat-panel-displays/samsung-s27a550h-prd7913146-ctgComputers.3001.222\"\n    },\n    {\n      \"name\": \"Benq G2420HDBL\",\n      \"price\": \"$199.75\",\n      \"Display\": \"24 Zoll\",\n      \"Brand\": \"BenQ\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/monitors/flat-panel-displays/benq-g2420hdbl-prd3781765-ctgComputers.3001.222\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind zwei Monitore, die deinen Anforderungen entsprechen:\n\n1. [Samsung S27A550H](https://pwa-salesemea-03-int.pwa.intershop.de/computers/monitors/flat-panel-displays/samsung-s27a550h-prd7913146-ctgComputers.3001.222) - $371.25\n   - Display: 27 Zoll\n   - Marke: Samsung\n\n2. [Benq G2420HDBL](https://pwa-salesemea-03-int.pwa.intershop.de/computers/monitors/flat-panel-displays/benq-g2420hdbl-prd3781765-ctgComputers.3001.222) - $199.75\n   - Display: 24 Zoll\n   - Marke: BenQ\n\nFalls du weitere Optionen oder zusätzliche Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string"
+           },
+           "subCategoryId": {
+             "type": "string"
+           },
+           "subsubCategoryId": {
+             "type": "string"
+           },
+           "filter": {
+             "type": "string"
+           },
+           "query": {
+             "type": "string"
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //beispiel 10
+   "messages": [
+     {
+       "role": "user",
+       "content": "Hast du Empfehlungen für eine externe Festplatte?"
+     },
+     {
+       "role": "assistant",
+       "content": "Welche Kapazität und Geschwindigkeit benötigst du?"
+     },
+     {
+       "role": "user",
+       "content": "Mindestens 1TB und schnelle Übertragung."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir nun einige schnelle und zuverlässige externe Festplatten mit 1TB oder mehr vorschlagen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Data Storage\",\n      \"id\": \"206\",\n      \"subCategories\": [\n        {\n          \"name\": \"External Hard Drives\",\n          \"id\": \"1823\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"206\", \"subsubCategoryId\": \"1823\", \"filter\": \"Capacity>=1TB\", \"query\": \"Externe Festplatte\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"A-DATA 1TB NH13\",\n      \"price\": \"$204.25\",\n      \"Capacity\": \"1TB\",\n      \"TransferSpeed\": \"USB 3.0\",\n      \"Brand\": \"A-Data\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/external-hard-drives/a-data-1tb-nh13-prd9733520-ctgComputers.206.1823\"\n    },\n    {\n      \"name\": \"A-DATA 1TB SH93\",\n      \"price\": \"$207.50\",\n      \"Capacity\": \"1TB\",\n      \"TransferSpeed\": \"USB 2.0\",\n      \"Brand\": \"A-Data\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/external-hard-drives/a-data-1tb-sh93-prd9921515-ctgComputers.206.1823\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind zwei externe Festplatten, wovon eine deinen Anforderungen entspricht,da wir nur diese auf lager haben.Die zweite Entspricht deinen Vorstellung von der Speicher Größe ,ist aber nicht so schnell.:\n\n1. [A-DATA 1TB NH13](https://pwa-salesemea-03-int.pwa.intershop.de/computers/data-storage/external-hard-drives/a-data-1tb-nh13-prd9733520-ctgComputers.206.1823) - $204.25\n   - Kapazität: 1TB\n   - Übertragungsgeschwindigkeit: USB 3.0\n\n2. [A-DATA 1TB SH93](https://pwa-salesemea-03-int.pwa.intershop.de/product/789012) - $207.50\n   - Kapazität: 1TB\n   - Übertragungsgeschwindigkeit: USB 2.0\n\nFalls du weitere Optionen oder zusätzliche Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string",
+             "description": "ID of the main category."
+           },
+           "subCategoryId": {
+             "type": "string",
+             "description": "ID of the subcategory."
+           },
+           "subsubCategoryId": {
+             "type": "string",
+             "description": "ID of the subsubcategory."
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'Capacity>=1TB&TransferSpeed=fast'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Externe Festplatte'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //beispiel 11
+   "messages": [
+     {
+       "role": "user",
+       "content": "Kannst du mir bei der Auswahl eines Gaming-Headsets helfen?"
+     },
+     {
+       "role": "assistant",
+       "content": "Präferierst du eine Marke und in welchem Budget soll das Ganze liegen?"
+     },
+     {
+       "role": "user",
+       "content": "Ich hätte gerne eins von Logitech, der Preis ist mir egal."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir nun Logitech Gaming-Headsets mit guter Klangqualität und komfortablem Design heraussuchen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Input Devices\",\n      \"id\": \"191\",\n      \"subCategories\": [\n        {\n          \"name\": \"Headsets\",\n          \"id\": \"1637\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"191\", \"subsubCategoryId\": \"1637\", \"filter\": \"Brand=Logitech\", \"query\": \"Gaming Headset\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Logitech ClearChat PC Wireless\",\n      \"price\": \"$98.75\",\n      \"Type\": \"Wireless Gaming Headset\",\n      \"Brand\": \"Logitech\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/input-devices/headsets/logitech-clearchat-pc-wireless-prd1454662-ctgComputers.191.1637\"\n    },\n    {\n      \"name\": \"Creative Labs HS-1200\",\n      \"price\": \"$100\",\n      \"Type\": \"Wireless Gaming Headset\",\n      \"Brand\": \"Creative\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/input-devices/headsets/creative-labs-hs-1200-prd1454642-ctgComputers.191.1637\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier ist ein Gaming-Headset von Logitech:\n\n1. [Logitech ClearChat PC Wireless](https://pwa-salesemea-03-int.pwa.intershop.de/computers/input-devices/headsets/logitech-clearchat-pc-wireless-prd1454662-ctgComputers.191.1637) - $98.75\n   - Typ: Wireless Gaming Headset\n   - Marke: Logitech\n\n Dieses Headset ist zwar nicht von Logitech,könnte dir aber trotzdem gefallen. \n2. [Creative Labs HS-1200](https://pwa-salesemea-03-int.pwa.intershop.de/computers/input-devices/headsets/creative-labs-hs-1200-prd1454642-ctgComputers.191.1637) - $86.00\n   - Typ: Wireless Gaming Headset\n   - Marke: Creative\n\nFalls du weitere Optionen oder zusätzliche Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string",
+             "description": "ID of the main category."
+           },
+           "subCategoryId": {
+             "type": "string",
+             "description": "ID of the subcategory."
+           },
+           "subsubCategoryId": {
+             "type": "string",
+             "description": "ID of the subsubcategory."
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'Brand=Logitech'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Gaming Headset'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //Beispiel 12
+   "messages": [
+     {
+       "role": "user",
+       "content": "Ich suche nach einem neuen Drucker."
+     },
+     {
+       "role": "assistant",
+       "content": "Okay, bevorzugst du irgendwelche Marken?"
+     },
+     {
+       "role": "user",
+       "content": "Ich hätte gerne einen Epson oder Canon Drucker."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir nun Drucker von den Marken Epson und Canon heraussuchen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Printers\",\n      \"id\": \"225\",\n      \"subCategories\": [\n        {\n          \"name\": \"Inkjet Printers\",\n          \"id\": \"234\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"225\", \"subsubCategoryId\": \"234\", \"filter\": \"Brand=Epson,Canon\", \"query\": \"Drucker\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Epson B-310N\",\n      \"price\": \"$351.99\",\n      \"Type\": \"Inkjet\",\n      \"Brand\": \"Epson\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/printers/inkjet-printers/epson-epson-b-310n-prd4145684-ctgComputers.225.234\"\n    },\n    {\n      \"name\": \"Canon PIXMA iX6550\",\n      \"price\": \"$243.99\",\n      \"Type\": \"Inkjet\",\n      \"Brand\": \"Canon\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/printers/inkjet-printers/canon-pixma-ix6550-prd7922746-ctgComputers.225.234\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier sind zwei Drucker von Epson und Canon, die deinen Anforderungen entsprechen:\n\n1. [Epson B-310N](https://pwa-salesemea-03-int.pwa.intershop.de/computers/printers/inkjet-printers/epson-epson-b-310n-prd4145684-ctgComputers.225.234) - $351.99\n   - Typ: Inkjet\n   - Marke: Epson\n\n2. [Canon PIXMA iX6550](https://pwa-salesemea-03-int.pwa.intershop.de/computers/printers/inkjet-printers/canon-pixma-ix6550-prd7922746-ctgComputers.225.234) - $243.99\n   - Typ: Inkjet\n   - Marke: Canon\n\nFalls du weitere Optionen oder zusätzliche Informationen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string",
+             "description": "ID of the main category."
+           },
+           "subCategoryId": {
+             "type": "string",
+             "description": "ID of the subcategory."
+           },
+           "subsubCategoryId": {
+             "type": "string",
+             "description": "ID of the subsubcategory."
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'Brand=Epson,Canon'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Drucker'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ { //Beispiel 13
+
+   "messages": [
+     {
+       "role": "user",
+       "content": "Ich suche einen leichten Laptop für Reisen."
+     },
+     {
+       "role": "assistant",
+       "content": "Wie wichtig ist dir die Akkulaufzeit? Möchtest du mindestens 10 Stunden?"
+     },
+     {
+       "role": "user",
+       "content": "Ja, mindestens 10 Stunden Akkulaufzeit wären ideal."
+     },
+     {
+       "role": "assistant",
+       "content": "Ich werde dir nun ein leichtes Notebook mit mindestens 10 Stunden Akkulaufzeit vorschlagen. Einen Moment bitte."
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "get_product_categories",
+         "arguments": "{\"mainCategory\": \"Computers\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "get_product_categories",
+       "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "function_call": {
+         "name": "product_search",
+         "arguments": "{\"mainCategoryId\": \"Computers\", \"subCategoryId\": \"1835\", \"subsubCategoryId\": \"151\",  \"query\": \"Reise Notebook\"}"
+       }
+     },
+     {
+       "role": "function",
+       "name": "product_search",
+       "content": "{\n  \"products\": [\n    {\n      \"name\": \"Microsoft Surface Laptop\",\n      \"price\": \"$1,299.00 - $2,399.00\",\n      \"BatteryLife\": \"14.5 Stunden\",\n      \"Weight\": \"1.25 kg\",\n      \"Brand\": \"Microsoft\",\n      \"link\": \"https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/microsoft-surface-laptop-prd201807204-ctgComputers.1835.151\"\n    }\n  ]\n}"
+     },
+     {
+       "role": "assistant",
+       "content": "Hier ist ein leichter Laptop, der sich ideal für Reisen eignet und bis zu 14.5 Stunden Akkulaufzeit hat:\n\n1. [Microsoft Surface Laptop](https://pwa-salesemea-03-int.pwa.intershop.de/computers/notebooks-and-pcs/notebooks/microsoft-surface-laptop-prd201807204-ctgComputers.1835.151) - $1,299.00 - $2,399.00\n   - Akkulaufzeit: 14.5 Stunden\n   - Gewicht: 1.25 kg\n   - Marke: Microsoft\n\nFalls du weitere Informationen oder zusätzliche Optionen benötigst, lass es mich wissen!"
+     }
+   ],
+   "functions": [
+     {
+       "name": "get_product_categories",
+       "description": "Returns all subcategories with their Id from a main category.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategory": {
+             "type": "string",
+             "description": "The main category, e.g., Computers, 3D_print, etc."
+           }
+         },
+         "required": [ "mainCategory" ]
+       }
+     },
+     {
+       "name": "product_search",
+       "description": "Searches for products and their information. If the user provides a filter, use the get_productcategory_filters to get the correct filter.",
+       "parameters": {
+         "type": "object",
+         "properties": {
+           "mainCategoryId": {
+             "type": "string",
+             "description": "ID of the main category."
+           },
+           "subCategoryId": {
+             "type": "string",
+             "description": "ID of the subcategory."
+           },
+           "subsubCategoryId": {
+             "type": "string",
+             "description": "ID of the subsubcategory."
+           },
+           "filter": {
+             "type": "string",
+             "description": "Filter to refine the search, e.g., 'BatteryLife>=10&Weight<1.5kg'."
+           },
+           "query": {
+             "type": "string",
+             "description": "Search query, e.g., 'Reise Notebook'."
+           }
+         },
+         "required": [ "mainCategoryId", "subCategoryId" ]
+       }
+     }
+   ]
+ },
+ {//Beispiel 14
+   {
+     "messages": [
+       {
+         "role": "user",
+         "content": "Wie lange ist die Garantie auf den Desktop?"
+       },
+       {
+         "role": "assistant",
+         "content": "Ich werde die FAQ-Seite öffnen, damit du dort die Garantieinformationen finden kannst. Einen Moment bitte."
+       },
+       {
+         "role": "assistant",
+         "function_call": {
+           "name": "open_faq",
+           "arguments": "{}"
+         }
+       },
+       {
+         "role": "user",
+         "content": "Warum weißt du das nicht?"
+       },
+       {
+         "role": "assistant",
+         "content": "Garantieinformationen variieren oft je nach Produkt. Daher leite ich dich zur FAQ-Seite weiter, wo du die genauesten Angaben findest."
+       }
+     ],
+     "functions": [
+       {
+         "name": "open_faq",
+         "description": "Brings the user to the FAQ also called Q and A",
+         "parameters": {
+           "type": "object",
+           "properties": {}
+         }
+       }
+     ]
+   }
+ },

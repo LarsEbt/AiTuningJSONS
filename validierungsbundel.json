@@ -1,0 +1,395 @@
+[
+{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Zeig mir ein Notebook von Lenovo."
+      },
+      {
+        "role": "assistant",
+        "content": "Hier ist, was ich gefunden habe. Wenn du weitere Informationen brauchst, lass es mich wissen."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_product_categories",
+          "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_product_categories",
+        "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_productcategory_filters",
+          "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"format\":\"string\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_productcategory_filters",
+        "content": "{\"filter\": \"ManufacturerName=Lenovo\"}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"filter\":\"ManufacturerName=Lenovo\", \"format\":\"string\"}"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "Ich habe Lenovo Notebooks gefunden. Teile mir mit, wenn du mehr Details zu einem Modell möchtest oder weitere Fragen hast!"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Searches for products and their information. If you provide a filter, use the name. For example: 'ManufacturerName=Microsoft'. A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string"
+            },
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": ["Query", "mainCategoryId"]
+        }
+      },
+      {
+        "name": "get_productcategory_filters",
+        "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "subsubCategoryId": {
+              "type": "string"
+            }
+          },
+          "required": ["mainCategoryId", "subCategoryId"]
+        }
+      },
+      {
+        "name": "get_product_categories",
+        "description": "Returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategory": {
+              "type": "string"
+            }
+          },
+          "required": ["mainCategory"]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich brauche ein Laptop von Microsoft."
+      },
+      {
+        "role": "assistant",
+        "content": "Hier sind die Ergebnisse. Für weitere Fragen oder Unterstützung, einfach Bescheid geben."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_product_categories",
+          "arguments": "{\"mainCategory\":\"Notebooks and PCs\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_product_categories",
+        "content": "{\n  \"name\": \"Computers\",\n  \"id\": \"Computers\",\n  \"subCategories\": [\n    {\n      \"name\": \"Notebooks and PCs\",\n      \"id\": \"1835\",\n      \"subsubCategories\": [\n        {\n          \"name\": \"Notebooks\",\n          \"id\": \"151\"\n        }\n      ]\n    }\n  ]\n}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "get_productcategory_filters",
+          "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"format\":\"string\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "get_productcategory_filters",
+        "content": "{\"filter\": \"ManufacturerName=Microsoft\"}"
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "product_search",
+          "arguments": "{\"mainCategoryId\":\"1835\", \"subCategoryId\":\"151\", \"filter\":\"ManufacturerName=Microsoft\", \"format\":\"string\"}"
+        }
+      },
+      {
+        "role": "function",
+        "name": "product_search",
+        "content": "{\n  \"products\": [\n    {\n      \"name\": \"Microsoft Surface Laptop Studio\",\n      \"price\": \"$2,100.00\",\n      \"url\": \"https://example.com/product/201807301\"\n    },\n    {\n      \"name\": \"Microsoft Surface Go 3\",\n      \"price\": \"$649.00\",\n      \"url\": \"https://example.com/product/201807302\"\n    }\n  ]\n}"
+      },
+      {
+        "role": "assistant",
+        "content": "Hier sind zwei Laptops von Microsoft, die ich gefunden habe:\n\n1. **Microsoft Surface Laptop Studio**\n   - Preis: $2,100.00\n   - [Hier ansehen](https://example.com/product/201807301)\n\n2. **Microsoft Surface Go 3**\n   - Preis: $649.00\n   - [Hier ansehen](https://example.com/product/201807302)\n\nInteressieren Sie sich für eines dieser Modelle oder benötigen Sie weitere Vorschläge?"
+      }
+    ],
+    "functions": [
+      {
+        "name": "product_search",
+        "description": "Searches for products and their information. If you provide a filter, use the name. For example: 'ManufacturerName=Microsoft'. A filter is not required! You can also just use the categories or the query or all together.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "Query": {
+              "type": "string"
+            },
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": ["Query", "mainCategoryId"]
+        }
+      },
+      {
+        "name": "get_productcategory_filters",
+        "description": "Gets the filters that can be applied to the product search. You need to get the Id's using the get_product_categories function.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategoryId": {
+              "type": "string"
+            },
+            "subCategoryId": {
+              "type": "string"
+            },
+            "subsubCategoryId": {
+              "type": "string"
+            }
+          },
+          "required": ["mainCategoryId", "subCategoryId"]
+        }
+      },
+      {
+        "name": "get_product_categories",
+        "description": "Returns all subcategories with their Id from a main category. mainCategory has to be **one** of: - 3D_print - Computers - presentation-conferencing - Home-Entertainment - networks - servers - specials",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mainCategory": {
+              "type": "string"
+            }
+          },
+          "required": ["mainCategory"]
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie viele Bananen verkauft HP pro Jahr?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das weiß ich leider nicht, aber ich kann dir bei der Suche nach HP-Produkten helfen."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Kann HP meine Hausaufgaben machen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das kann ich leider nicht beantworten, aber ich helfe dir gern bei der Suche nach HP-Produkten."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie schmeckt ein Laptop von HP?"
+      },
+      {
+        "role": "assistant",
+        "content": "Das weiß ich nicht, aber ich kann dir bei der Suche nach HP-Laptops helfen."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie lange ist die Garantie auf den Desktop?"
+      },
+      {
+        "role": "assistant",
+        "content": "Die Garantiezeit für den Desktop beträgt in der Regel 2 Jahre. Weitere Informationen findest du auf der Produktseite."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "open_faq",
+          "arguments": "{}"
+        }
+      },
+      {
+        "role": "user",
+        "content": "Warum weißt du das nicht?"
+      },
+      {
+        "role": "assistant",
+        "content": "Die Garantiebedingungen können je nach Produkt unterschiedlich sein. Ich leite dich zur FAQ-Seite weiter, wo du alle genauen Informationen finden kannst."
+      }
+    ],
+    "functions": [
+      {
+        "name": "open_faq",
+        "description": "Brings the user to the FAQ also called Q and A",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Gibt es auf der Webseite den Golf GTI?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nein, wir verkaufen keine Autos."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wo ist die Help seite?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hier entlang",
+        "fuction_call": {
+          "name": "open_help_page"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "open_help_page",
+        "description": "navigate to the help page",
+        "parameters:": {}
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I would like to have a Laptop with an AMD prozessor"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to inform you, but we have no Laptops with AMD prozessors."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ich will ein Template erstellen gibt es vorraussetzungen?"
+      },
+      {
+        "role": "assistant",
+        "content": "Stellen sie sicher das sie angemeldet sind."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Zeige mir meinen Warenkorb."
+      },
+      {
+        "role": "assistant",
+        "function_call": {
+          "name": "open_basket",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "open_basket",
+        "description": "Opens the user's basket.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        },
+        "required": []
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wie lange hält der Akku des Laptops?"
+      },
+      {
+        "role": "assistant",
+        "content": "Leider habe ich keine genaue Information dazu. Möchtest du die Details auf der Produktseite ansehen?"
+      }
+    ]
+  }
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+]  
+  
